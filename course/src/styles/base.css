@@ -33,7 +33,6 @@ a {
 :focus-visible {
   outline: 3px solid var(--def);
   outline-offset: 2px;
-  border-radius: 6px;
 }
 
 h1,
@@ -93,6 +92,7 @@ h3 {
 
 @media (hover: none), (max-width: 600px) {
   .kbd,
+  .kbd-hint,
   .word-key,
   .bucket-key {
     display: none !important;

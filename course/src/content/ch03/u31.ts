@@ -24,13 +24,13 @@ const BOTH_SIDES = c(32, "3.1", 'Traders on both sides of the trading industry r
 const BUY_SIDE = c(32, "3.1.1", "The buy side of the trading industry includes individuals, funds, firms, and governments that use the markets to help solve various problems they face.");
 const OUTSIDE = c(33, "3.1.1", "These problems typically originate outside of trading markets. For example, investors use securities markets to solve intertemporal cash flow problems: They have income today that they would like to have available in the future.");
 const T31 = (t: string): Cite => c(33, "3.1.1", t, { table: "Table 3-1" });
-const T_INVESTORS = T31("Investors To move wealth from the present to the future for themselves or for their clients Stocks Bonds");
-const T_BORROWERS = T31("Borrowers Homeowners Students Corporations To move wealth from the future to the present Mortgages Bonds Notes");
-const T_HEDGERS = T31("Hedgers Farmers Manufacturers Miners Shippers Financial institutions To reduce business operating risk Futures contracts Forward contracts Swaps");
-const T_EXCH = T31("Asset exchangers International corporations Manufacturers Travelers To acquire an asset that they value more than the asset that they tender Currencies Commodities");
-const T_GAMBLERS = T31("Gamblers Individuals To entertain themselves Various");
-const T_WHY = T31("Investors To move wealth from the present to the future Borrowers To move wealth from the future to the present Hedgers To reduce business operating risk Asset exchangers To acquire an asset that they value more than the asset that they tender Gamblers To entertain themselves");
-const T_EXAMPLES = T31("Investors Endowments Mutual funds Borrowers Homeowners Students Hedgers Farmers Miners Asset exchangers International corporations Travelers");
+const T_INVESTORS = T31("Investors · To move wealth from the present to the future for themselves or for their clients · Stocks, Bonds");
+const T_BORROWERS = T31("Borrowers (Homeowners, Students, Corporations) · To move wealth from the future to the present · Mortgages, Bonds, Notes");
+const T_HEDGERS = T31("Hedgers (Farmers, Manufacturers, Miners, Shippers, Financial institutions) · To reduce business operating risk · Futures contracts, Forward contracts, Swaps");
+const T_EXCH = T31("Asset exchangers (International corporations, Manufacturers, Travelers) · To acquire an asset that they value more than the asset that they tender · Currencies, Commodities");
+const T_GAMBLERS = T31("Gamblers (Individuals) · To entertain themselves · Various");
+const T_WHY = T31("Investors: To move wealth from the present to the future · Borrowers: To move wealth from the future to the present · Hedgers: To reduce business operating risk · Asset exchangers: To acquire an asset that they value more than the asset that they tender · Gamblers: To entertain themselves");
+const T_EXAMPLES = T31("Investors: Endowments, Mutual funds · Borrowers: Homeowners, Students · Hedgers: Farmers, Miners · Asset exchangers: International corporations, Travelers");
 const SPONSORS = c(33, "3.1.1", "Many buy-side institutions are pension funds, mutual funds, trusts, endowments, and foundations that invest money. These institutions are known collectively as investment sponsors.");
 const ADVISERS = c(33, "3.1.1", "Investment sponsors frequently employ investment advisers to manage their funds. Investment advisers are also called investment counselors, investment managers, or portfolio managers.");
 const BS_TRADERS = c(33, "3.1.1", "Investment advisers often employ traders to implement their trading decisions. These traders are buy-side traders.");
@@ -45,8 +45,8 @@ const BD = c(34, "3.1.2", "Many sell-side firms employ traders who both deal and
 const EXISTS = c(34, "3.1.2", "The sell side exists only because the buy side will pay for its services.");
 const WIRE = c(34, "3.1.2", 'Traders often call large broker-dealers wirehouses. The word "wire" in wirehouse once referred to the telegraph.', { box: "The Wire in Wirehouse" });
 const T32 = (t: string): Cite => c(34, "3.1.2", t, { table: "Table 3-2" });
-const T_WHY_SELL = T32("Dealers To earn trading profits by supplying liquidity Brokers To earn commissions by arranging trades for clients Broker-dealers To earn trading profits and trading commissions");
-const T_EX_SELL = T32("Dealers Market makers Specialists Floor traders Locals Scalpers Brokers Discount brokers Block brokers Futures commission merchants Broker-dealers Wirehouses");
+const T_WHY_SELL = T32("Dealers: To earn trading profits by supplying liquidity · Brokers: To earn commissions by arranging trades for clients · Broker-dealers: To earn trading profits and trading commissions");
+const T_EX_SELL = T32("Dealers: Market makers, Specialists, Floor traders, Locals, Scalpers · Brokers: Discount brokers, Block brokers, Futures commission merchants · Broker-dealers: Wirehouses");
 const PTS_LIQ = c(66, "3.7", "The buy side buys liquidity services. The sell side provides them.");
 const PTS_DEALERS = c(66, "3.7", "Dealers trade for their own account. Brokers trade for others.");
 

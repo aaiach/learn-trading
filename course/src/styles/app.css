@@ -116,8 +116,9 @@
   margin-bottom: 16px;
 }
 .card-ref {
-  font-family: var(--mono);
-  font-size: 12px;
+  font-size: 12.5px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
   white-space: nowrap;
 }
@@ -289,9 +290,9 @@
 .recap-ref {
   display: block;
   margin-top: 3px;
-  font-family: var(--mono);
-  font-size: 11.5px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
 .card-today {
@@ -663,9 +664,10 @@
   gap: 12px;
 }
 .cls-count {
-  padding-top: 3px;
-  font-family: var(--mono);
-  font-size: 13px;
+  padding-top: 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
   white-space: nowrap;
 }
@@ -758,6 +760,7 @@
   display: grid;
   gap: 12px;
   margin-top: 14px;
+  padding-bottom: 6px;
 }
 .cls-why p {
   margin: 0;
@@ -773,13 +776,8 @@
 .match {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 8px 10px;
   margin-bottom: 4px;
-}
-.m-col {
-  display: grid;
-  gap: 8px;
-  align-content: start;
 }
 .m-cell {
   display: flex;
@@ -823,6 +821,7 @@
   display: grid;
   gap: 6px;
   justify-items: start;
+  padding-bottom: 6px;
 }
 .game-intro .lead {
   margin: 0 0 12px;
@@ -831,7 +830,7 @@
   display: grid;
   justify-items: center;
   gap: 8px;
-  padding: 12px 0 4px;
+  padding: 12px 0 6px;
 }
 .game-trophy {
   display: grid;
@@ -1160,7 +1159,7 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -1271,10 +1270,15 @@
 .unit {
   margin-bottom: 22px;
 }
-.unit-banner {
+.unit-sticky {
+  /* sticks flush under the top bar; its background hides the path scrolling past the gap */
   position: sticky;
-  top: 70px;
+  top: 63px;
   z-index: 5;
+  padding-top: 8px;
+  background: linear-gradient(var(--bg) 60%, transparent);
+}
+.unit-banner {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -1350,8 +1354,20 @@
   box-shadow: 0 6px 0 color-mix(in srgb, var(--gold) 62%, #000);
 }
 .pnode-btn.current {
-  outline: 5px solid color-mix(in srgb, var(--progress) 28%, transparent);
-  outline-offset: 5px;
+  position: relative;
+  margin: 2px 0 12px;
+}
+.pnode-btn.current::after {
+  /* the coin is 74×68 plus a 6px edge below: centre the ring on the whole coin, not its top face */
+  content: "";
+  position: absolute;
+  inset: -9px -9px -15px -9px;
+  border-radius: 50%;
+  border: 5px solid color-mix(in srgb, var(--progress) 28%, transparent);
+  pointer-events: none;
+}
+.pnode-current {
+  margin-top: 30px;
 }
 .pnode-btn.open {
   background: var(--surface);
@@ -1416,9 +1432,10 @@
 }
 .pnode-label small {
   display: block;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
+  margin-bottom: 1px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
 .pop {
@@ -1442,8 +1459,9 @@
 }
 .pop-eyebrow {
   margin: 0;
-  font-family: var(--mono);
-  font-size: 12px;
+  font-size: 12.5px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
 .pop-meta {
@@ -1480,8 +1498,11 @@
   font-size: 17px;
 }
 .exam-node small {
+  display: block;
+  margin-top: 2px;
   color: var(--ink-3);
   font-size: 13.5px;
+  line-height: 1.35;
 }
 .map-foot {
   display: flex;
@@ -1575,7 +1596,9 @@
 }
 .legend summary::after {
   content: "+";
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
   color: var(--ink-3);
 }
 .legend[open] summary::after {
@@ -1631,7 +1654,7 @@
 }
 .toc-row {
   display: grid;
-  grid-template-columns: 30px 1fr auto;
+  grid-template-columns: 22px 1fr auto;
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
@@ -1648,8 +1671,8 @@
   box-shadow: 0 4px 0 color-mix(in srgb, var(--progress) 45%, transparent);
 }
 .toc-num {
-  font-family: var(--mono);
-  font-weight: 700;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
 .toc-title {
@@ -1726,7 +1749,10 @@
   font-size: 16px;
 }
 .hub-text small {
+  display: block;
+  margin-top: 2px;
   font-size: 13.5px;
+  line-height: 1.35;
   color: var(--ink-3);
 }
 .hub-chev {
@@ -1760,7 +1786,10 @@
   margin: 0;
   padding-left: 18px;
   color: var(--ink-2);
-  line-height: 1.75;
+  line-height: 1.45;
+}
+.exam-rules li + li {
+  margin-top: 6px;
 }
 .exam-card .btn {
   width: 100%;
@@ -1960,12 +1989,20 @@
   box-shadow: var(--shadow-lg);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+.fc-face::before {
+  /* same kind stripe as lesson cards */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: var(--def);
 }
 .fc-front {
   align-content: center;
   justify-items: center;
   text-align: center;
-  border-top: 5px solid var(--def);
 }
 .fc-term {
   font-size: 32px;
@@ -1985,7 +2022,6 @@
   text-align: left;
   overflow: auto;
   transform: rotateY(180deg);
-  border-top: 5px solid var(--def);
 }
 .fc-term-sm {
   font-size: 18px;
@@ -2058,6 +2094,9 @@
     display: none;
   }
   .topbar .ring-val {
+    display: none;
+  }
+  .topbar .theme-toggle {
     display: none;
   }
 }

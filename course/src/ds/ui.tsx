@@ -42,7 +42,13 @@ export function Rich({ text }: { text: string }) {
   );
 }
 
-function highlight(text: string, marks?: string[]): ReactNode {
+/** Display-only typography: straight quotes and apostrophes become curly ones. */
+function curly(t: string): string {
+  return t.replace(/"([^"]*)"/g, "\u201c$1\u201d").replace(/(\w)'/g, "$1\u2019");
+}
+
+function highlight(raw: string, marks?: string[]): ReactNode {
+  const text = curly(raw);
   if (!marks?.length) return text;
   const esc = marks.map((m) => m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
   const re = new RegExp(`(${esc.join("|")})`, "gi");

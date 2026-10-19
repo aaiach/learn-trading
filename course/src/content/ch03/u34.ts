@@ -13,11 +13,11 @@ const STOCKS20 = c(45, "3.4.1", "Despite the tremendous attention given to the s
 const MOST_WEALTH = c(45, "3.4.1", "Most of the wealth is in real estate, which rarely trades, and in various types of bonds.");
 const DERIV0 = c(45, "3.4.1", "Derivative contracts represent no wealth because they are all in zero net supply and do not represent ownership of real assets.");
 const T34 = (t: string): Cite => c(45, "3.4.1", t, { table: "Table 3-4" });
-const T34_STOCKS = T34("Common stocks 20%");
-const T34_REAL = T34("Real estate 50%");
-const T34_BONDS = T34("Corporate bonds 15% Municipal bonds 10% Government bonds 10%");
+const T34_STOCKS = T34("Common stocks: 20%");
+const T34_REAL = T34("Real estate: 50%");
+const T34_BONDS = T34("Corporate bonds: 15% · Municipal bonds: 10% · Government bonds: 10%");
 const T34_NOTE = T34("The percentages add up to more than 100 percent primarily because corporations own real estate.");
-const T34_ACTIVE = T34("Common stocks 15,000 1,000 Corporate bonds 100,000 50 Municipal bonds 1,000,000 0 Government bonds 50 3 Futures contracts 100 20");
+const T34_ACTIVE = T34("Total instruments / actively traded · Common stocks: 15,000 / 1,000 · Corporate bonds: 100,000 / 50 · Municipal bonds: 1,000,000 / 0 · Government bonds: 50 / 3 · Futures contracts: 100 / 20");
 const NYSE62 = c(45, "3.4.1", "At the NYSE, the 250 most active stocks accounted for 62 percent of the total reported trading volume, and a larger percentage of the total dollar volume, in 2000.");
 const PUBLIC = c(45, "3.4.1", "When trading the most active stocks, public traders often trade with other public traders. Otherwise, public traders often trade with sell-side dealers.");
 const RETAIL = c(45, "3.4.1", "Most trades are small retail trades; large institutional traders account for most share volume.");
@@ -54,7 +54,7 @@ const THIRD = c(49, "3.4.2.1", "The third market includes dealers and brokers wh
 const ATS = c(49, "3.4.2.1", "U.S. stocks also trade in various electronic trading systems known as alternative trading systems (ATSs). Registered broker-dealers sponsor most of these systems.");
 const ECN = c(49, "3.4.2.1", "Electronic communications networks (ECNs) are the best-known alternative trading systems.");
 const FOURTH = c(49, "3.4.2.1", "The term fourth market refers to trading in exchange-listed stocks within these systems.");
-const T35 = c(49, "3.4.2.1", "Primary listing markets New York Stock Exchange The Nasdaq National Market Regional markets Chicago Stock Exchange Philadelphia Stock Exchange Third market dealers Madoff Investment Securities Knight Trading Group Instinet Island POSIT", { table: "Table 3-5" });
+const T35 = c(49, "3.4.2.1", "Primary listing markets: New York Stock Exchange, The Nasdaq National Market · Regional markets: Chicago Stock Exchange, Philadelphia Stock Exchange · Third market dealers: Madoff Investment Securities, Knight Trading Group · Instinet · Island · POSIT", { table: "Table 3-5" });
 
 // ── Excerpts: volume-counting box (p. 48) ───────────────────────────────────
 const VBOX = "Double- and Triple-counting Volumes";
@@ -103,7 +103,7 @@ const FRONT = c(54, "3.4.4", "The contract that will expire next is called the f
 const ROLL = c(54, "3.4.4", "In financial and industrial commodities, traders mostly trade only the front month contract. When it expires, they roll their positions into the next contract.");
 const HARVEST = c(54, "3.4.4", "The first harvest contract is the first contract on which traders can deliver the currently growing crop. Hedgers and speculators usually have great interest in this contract.");
 const BOARDS = c(54, "3.4.4.1", "These exchanges are often called boards of trade.");
-const T310 = c(57, "3.4.4.2", "Eurex, Germany and Switzerland 435.1 1 Chicago Mercantile Exchange, USA 316.0 2 Chicago Board of Trade, USA 210.0 3", { table: "Table 3-10" });
+const T310 = c(57, "3.4.4.2", "Volume (millions), rank · Eurex, Germany and Switzerland: 435.1, 1 · Chicago Mercantile Exchange, USA: 316.0, 2 · Chicago Board of Trade, USA: 210.0, 3", { table: "Table 3-10" });
 
 // ── Excerpts: 3.4.5 bonds, 3.4.6 Treasuries ─────────────────────────────────
 const OTC_BONDS = c(54, "3.4.5", "Throughout the world, most corporate and municipal bonds trade over the counter in investment banks or commercial banks.");

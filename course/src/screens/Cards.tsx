@@ -104,7 +104,9 @@ export function Cards({ ch, store }: { ch: Chapter; store: ProgressStore }) {
                     <Chip tone="def" small />
                     <span className="fc-term">{card.step.term}</span>
                     <span className="fc-hint">
-                      <RotateCw size={14} /> Tap or press <Kbd>Space</Kbd> to flip
+                      <RotateCw size={14} /> Tap to flip
+                      <span className="kbd-hint">{" or press "}</span>
+                      <Kbd>Space</Kbd>
                     </span>
                   </span>
                   <span className="fc-face fc-back">

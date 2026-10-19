@@ -179,7 +179,7 @@ export function MatchView({ step, onDone, refText }: { step: MatchStep; onDone: 
   const cell = (side: "l" | "r", i: number, text: string) => {
     const isM = matched.includes(i);
     const sel = side === "l" ? selL === i : selR === i;
-    const isBad = bad && (side === "l" ? bad.l === i : bad.r === i);
+    const isBad = !isM && bad && (side === "l" ? bad.l === i : bad.r === i);
     return (
       <motion.button
         key={`${side}${i}${isBad ? bad.n : ""}`}
@@ -203,8 +203,7 @@ export function MatchView({ step, onDone, refText }: { step: MatchStep; onDone: 
         <Rich text={step.q} />
       </h2>
       <div className="match">
-        <div className="m-col">{step.pairs.map((p, i) => cell("l", i, p[0]))}</div>
-        <div className="m-col">{right.map((i) => cell("r", i, step.pairs[i][1]))}</div>
+        {step.pairs.map((p, i) => [cell("l", i, p[0]), cell("r", right[i], step.pairs[right[i]][1])])}
       </div>
       <Swap k={done ? "done" : "go"}>
         {done ? <BookQuote cite={step.cite} size="sm" /> : <p className="hint">Tap a term, then its match.</p>}

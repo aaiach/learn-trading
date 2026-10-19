@@ -32,23 +32,25 @@ export function ChapterMap({ ch, store }: { ch: Chapter; store: ProgressStore })
         const done = nodes.filter((n) => n.type === "lesson" && n.status === "done").length;
         return (
           <section key={u.sec} className="unit">
-            <header className="unit-banner">
-              <span className="unit-sec">{u.sec}</span>
-              <div className="unit-text">
-                <h2>{u.title}</h2>
-                <p>
-                  pp. {u.pages} · {done}/{u.lessons.length} lessons
-                </p>
-              </div>
-              <div className="unit-bar" aria-hidden>
-                <motion.div
-                  className="unit-bar-fill"
-                  initial={false}
-                  animate={{ width: `${(100 * done) / u.lessons.length}%` }}
-                  transition={spring.fill}
-                />
-              </div>
-            </header>
+            <div className="unit-sticky">
+              <header className="unit-banner">
+                <span className="unit-sec">{u.sec}</span>
+                <div className="unit-text">
+                  <h2>{u.title}</h2>
+                  <p>
+                    pp. {u.pages} · {done}/{u.lessons.length} lessons
+                  </p>
+                </div>
+                <div className="unit-bar" aria-hidden>
+                  <motion.div
+                    className="unit-bar-fill"
+                    initial={false}
+                    animate={{ width: `${(100 * done) / u.lessons.length}%` }}
+                    transition={spring.fill}
+                  />
+                </div>
+              </header>
+            </div>
             <ol className="path">
               {nodes.map((n) => {
                 const key = n.type === "lesson" ? n.lesson.id : `cp-${n.unitSec}`;
@@ -125,7 +127,7 @@ function PathNodeView({
     else navigate(`/${chId}/cp/${node.unitSec}`);
   };
   return (
-    <li ref={liRef} className={`pnode ${open ? "pnode-open" : ""}`} style={{ transform: `translateX(${offset}px)` }}>
+    <li ref={liRef} className={`pnode${open ? " pnode-open" : ""}${st === "current" ? " pnode-current" : ""}`} style={{ transform: `translateX(${offset}px)` }}>
       <AnimatePresence>
         {st === "current" && !open && (
           <motion.span
