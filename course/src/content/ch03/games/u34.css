@@ -1,0 +1,83 @@
+/* WealthGuess (3.4.1) */
+.wg {
+  display: grid;
+  gap: 14px;
+  justify-items: stretch;
+}
+.wg > .btn {
+  justify-self: start;
+}
+.wg-lead {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.wg-row {
+  display: grid;
+  gap: 6px;
+}
+.wg-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+}
+.wg-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--game-ink);
+}
+.wg-range {
+  width: 100%;
+  accent-color: var(--game);
+  height: 28px;
+  cursor: pointer;
+}
+.wg-track {
+  position: relative;
+  height: 28px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.wg-truth {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--see);
+  opacity: 0.85;
+}
+.wg-pin {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 4px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--game);
+}
+.wg-off {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.wg-off.ok {
+  color: var(--good-ink);
+}
+.wg-off.ko {
+  color: var(--bad-ink);
+}
+.wg-end {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+.wg-end p {
+  margin: 0;
+  font-size: 15px;
+}

@@ -1,0 +1,103 @@
+/* TradingPit (3.1) */
+.pit {
+  display: grid;
+  gap: 10px;
+}
+.pit-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pit-pos {
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--line-strong);
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.pit-pos.long {
+  background: var(--good-soft);
+  border-color: var(--good);
+  color: var(--good-ink);
+}
+.pit-pos.short {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+  color: var(--bad-ink);
+}
+.pit-price {
+  flex: 1;
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.pit-time {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.pit-pnl {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.pit-pnl strong {
+  font-variant-numeric: tabular-nums;
+}
+.pit-pnl .pos {
+  color: var(--good-ink);
+}
+.pit-pnl .neg {
+  color: var(--bad-ink);
+}
+.pit-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 52px;
+  border: 0;
+  border-radius: var(--r);
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+}
+.pit-btn.buy {
+  background: var(--good);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--good) 60%, #000);
+}
+.pit-btn.sell {
+  background: var(--bad);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--bad) 60%, #000);
+}
+.pit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pit-missions {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.pit-missions li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pit-missions li.ok {
+  color: var(--good-ink);
+  font-weight: 700;
+}

@@ -1,0 +1,122 @@
+/* OdaxGame (3.3.3.1) */
+.odax {
+  display: grid;
+  gap: 10px;
+}
+.odax-goal {
+  display: grid;
+  gap: 2px;
+}
+.odax-goal p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+.odax-round {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.odax-chart {
+  touch-action: none;
+  cursor: ew-resize;
+  user-select: none;
+}
+.odax-read {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.odax-read strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.odax-read .pos {
+  color: var(--good-ink);
+}
+.odax-read .neg {
+  color: var(--bad-ink);
+}
+.odax-nudge {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.odax-nudge button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 40px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.odax-nudge button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.odax-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  border: 0;
+  border-radius: var(--r);
+  background: var(--game);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--game) 60%, #000);
+  cursor: pointer;
+}
+.odax-fb {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 650;
+}
+.odax-fb span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.odax-fb.ok {
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.odax-fb.ko {
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.odax-fb button {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font-weight: 800;
+  cursor: pointer;
+}
+.odax-chart:focus-visible {
+  outline: none;
+}
+.odax-chart:focus-visible .odax-bg {
+  stroke: var(--game);
+  stroke-width: 3;
+}

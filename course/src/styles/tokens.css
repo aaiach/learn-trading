@@ -1,0 +1,133 @@
+/* Design tokens. Every card kind owns one hue (see src/ds/kinds.ts); green and red are reserved for right/wrong. */
+:root {
+  color-scheme: light;
+  --font: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --serif: "Source Serif 4 Variable", Georgia, serif;
+  --mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --bg: #f3f5fa;
+  --surface: #ffffff;
+  --surface-2: #f7f8fb;
+  --line: #e3e7ef;
+  --line-strong: #cfd5e1;
+  --ink: #141a26;
+  --ink-2: #4a5468;
+  --ink-3: #7a8499;
+  --shadow: 0 1px 2px rgb(20 26 38 / 0.05), 0 6px 20px rgb(20 26 38 / 0.06);
+  --shadow-lg: 0 2px 6px rgb(20 26 38 / 0.06), 0 18px 48px rgb(20 26 38 / 0.12);
+
+  /* Primary action = ink, so colour always means "kind of content" or "right/wrong". */
+  --cta: #141a26;
+  --cta-ink: #ffffff;
+  --cta-off: #d9dee8;
+
+  /* Kinds */
+  --def: #2f6bff;   --def-soft: #eaf0ff;   --def-ink: #1d4ed8;
+  --idea: #7b61ff;  --idea-soft: #f0ecff;  --idea-ink: #5a3fe0;
+  --book: #a5682a;  --book-soft: #fbf4e7;  --book-ink: #7a4b19;  --paper: #fffaf0;
+  --see: #0e9f97;   --see-soft: #e2f6f3;   --see-ink: #0a7570;
+  --prac: #f2711c;  --prac-soft: #fff0e4;  --prac-ink: #b9500a;
+  --game: #e2458c;  --game-soft: #fde9f2;  --game-ink: #b02c69;
+  --recap: #334155; --recap-soft: #edf1f6; --recap-ink: #1e293b;
+  --today: #6b7280; --today-soft: #f2f3f5; --today-ink: #4b5563;
+
+  /* Feedback */
+  --good: #18a957;  --good-soft: #e5f7ec;  --good-ink: #0f7a3e;
+  --bad: #e5484d;   --bad-soft: #fdecec;   --bad-ink: #b4232a;
+  --gold: #f5b100;  --gold-soft: #fff6d6;  --gold-ink: #8a5d00;
+  --fire: #ff6b2c;
+  --progress: #22c55e;
+
+  /* Scenes */
+  --scene-bg: #f6f8fc;
+  --scene-grid: #e8ecf4;
+  --node: #ffffff;
+  --node-line: #cfd6e3;
+  --cash: #18a957;
+  --asset: #2f6bff;
+
+  --r-sm: 10px;
+  --r: 14px;
+  --r-lg: 22px;
+  --col: 600px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d1118;
+  --surface: #161c27;
+  --surface-2: #1b2230;
+  --line: #273041;
+  --line-strong: #364256;
+  --ink: #edf1f8;
+  --ink-2: #b4bdcd;
+  --ink-3: #828da2;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 2px 8px rgb(0 0 0 / 0.35), 0 20px 50px rgb(0 0 0 / 0.45);
+  --cta: #edf1f8;
+  --cta-ink: #0d1118;
+  --cta-off: #2b3445;
+
+  --def: #6b95ff;   --def-soft: #17244a;   --def-ink: #a9c1ff;
+  --idea: #a08cff;  --idea-soft: #241d4a;  --idea-ink: #c9bdff;
+  --book: #d9a25e;  --book-soft: #2c2214;  --book-ink: #f0c992;  --paper: #1e1a13;
+  --see: #2fc4b9;   --see-soft: #0f2b2b;   --see-ink: #8ce6dd;
+  --prac: #ff8f45;  --prac-soft: #34200f;  --prac-ink: #ffbf8f;
+  --game: #f06aa5;  --game-soft: #3a1527;  --game-ink: #ffa9cd;
+  --recap: #9aa8bf; --recap-soft: #1f2735; --recap-ink: #dbe3f0;
+  --today: #9ca3af; --today-soft: #20242c; --today-ink: #cbd0d8;
+
+  --good: #2fcf75;  --good-soft: #10291b;  --good-ink: #8ef0b5;
+  --bad: #ff6b6f;   --bad-soft: #351417;   --bad-ink: #ffb0b2;
+  --gold: #ffc533;  --gold-soft: #33290d;  --gold-ink: #ffd76a;
+  --fire: #ff8a50;
+  --progress: #2fcf75;
+
+  --scene-bg: #121823;
+  --scene-grid: #1c2432;
+  --node: #1b2230;
+  --node-line: #364256;
+  --cash: #2fcf75;
+  --asset: #6b95ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0d1118;
+    --surface: #161c27;
+    --surface-2: #1b2230;
+    --line: #273041;
+    --line-strong: #364256;
+    --ink: #edf1f8;
+    --ink-2: #b4bdcd;
+    --ink-3: #828da2;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
+    --shadow-lg: 0 2px 8px rgb(0 0 0 / 0.35), 0 20px 50px rgb(0 0 0 / 0.45);
+    --cta: #edf1f8;
+    --cta-ink: #0d1118;
+    --cta-off: #2b3445;
+
+    --def: #6b95ff;   --def-soft: #17244a;   --def-ink: #a9c1ff;
+    --idea: #a08cff;  --idea-soft: #241d4a;  --idea-ink: #c9bdff;
+    --book: #d9a25e;  --book-soft: #2c2214;  --book-ink: #f0c992;  --paper: #1e1a13;
+    --see: #2fc4b9;   --see-soft: #0f2b2b;   --see-ink: #8ce6dd;
+    --prac: #ff8f45;  --prac-soft: #34200f;  --prac-ink: #ffbf8f;
+    --game: #f06aa5;  --game-soft: #3a1527;  --game-ink: #ffa9cd;
+    --recap: #9aa8bf; --recap-soft: #1f2735; --recap-ink: #dbe3f0;
+    --today: #9ca3af; --today-soft: #20242c; --today-ink: #cbd0d8;
+
+    --good: #2fcf75;  --good-soft: #10291b;  --good-ink: #8ef0b5;
+    --bad: #ff6b6f;   --bad-soft: #351417;   --bad-ink: #ffb0b2;
+    --gold: #ffc533;  --gold-soft: #33290d;  --gold-ink: #ffd76a;
+    --fire: #ff8a50;
+    --progress: #2fcf75;
+
+    --scene-bg: #121823;
+    --scene-grid: #1c2432;
+    --node: #1b2230;
+    --node-line: #364256;
+    --cash: #2fcf75;
+    --asset: #6b95ff;
+  }
+}

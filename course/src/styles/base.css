@@ -1,0 +1,100 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--def);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.col {
+  width: 100%;
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* Kind tones: components read --k / --k-soft / --k-ink */
+.t-def { --k: var(--def); --k-soft: var(--def-soft); --k-ink: var(--def-ink); }
+.t-idea { --k: var(--idea); --k-soft: var(--idea-soft); --k-ink: var(--idea-ink); }
+.t-book { --k: var(--book); --k-soft: var(--book-soft); --k-ink: var(--book-ink); }
+.t-see { --k: var(--see); --k-soft: var(--see-soft); --k-ink: var(--see-ink); }
+.t-prac { --k: var(--prac); --k-soft: var(--prac-soft); --k-ink: var(--prac-ink); }
+.t-game { --k: var(--game); --k-soft: var(--game-soft); --k-ink: var(--game-ink); }
+.t-recap { --k: var(--recap); --k-soft: var(--recap-soft); --k-ink: var(--recap-ink); }
+.t-today { --k: var(--today); --k-soft: var(--today-soft); --k-ink: var(--today-ink); }
+
+.kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 5px;
+  margin-left: 2px;
+  border-radius: 6px;
+  border: 1px solid currentColor;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1;
+  opacity: 0.55;
+}
+
+@media (hover: none), (max-width: 600px) {
+  .kbd,
+  .word-key,
+  .bucket-key {
+    display: none !important;
+  }
+}
