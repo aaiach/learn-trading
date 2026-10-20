@@ -7,8 +7,9 @@ import { storeFor, useProgress } from "../state/progress.ts";
 import { ThemeToggle } from "../theme.tsx";
 import { MasteryRing } from "./Shell.tsx";
 import { IMPORTANCE, KINDS } from "../ds/kinds.ts";
-import { Chip, ImpTag } from "../ds/ui.tsx";
-import { focusView, useChapterView, useFocus } from "../focus.ts";
+import { Chip, ImpBars, ImpTag } from "../ds/ui.tsx";
+import { focusView, setFocus, useChapterView, useFocus } from "../focus.ts";
+import { spring } from "../motion/tokens.ts";
 
 function ChapterRow({ num, title, page }: { num: number; title: string; page: number }) {
   const id = chapterId(num);
@@ -76,7 +77,6 @@ function HeroGo() {
       <span className="hero-go-text">
         <small>
           {ch.part} · Chapter {ch.num}
-          {view !== ch && " · Must know only"}
         </small>
         <strong>{ch.title}</strong>
       </span>
@@ -84,6 +84,31 @@ function HeroGo() {
         {m ? "Continue" : "Start"} <ArrowRight size={16} />
       </span>
     </Link>
+  );
+}
+
+/** "Must know only": one switch for the whole course. On, every chapter is just its must-know lessons. */
+function FocusSwitch() {
+  const on = useFocus();
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={on}
+      className={`focus-switch${on ? " on" : ""}`}
+      onClick={() => setFocus(!on)}
+    >
+      <span className="focus-ico">
+        <ImpBars imp={3} size={16} />
+      </span>
+      <span className="focus-text">
+        <strong>Must know only</strong>
+        <small>Just the basics every experienced trader knows cold</small>
+      </span>
+      <span className="switch" aria-hidden>
+        <motion.span className="switch-knob" initial={false} animate={{ x: on ? 20 : 0 }} transition={spring.ui} />
+      </span>
+    </button>
   );
 }
 
@@ -104,6 +129,7 @@ export function Home() {
       </header>
       <main className="col home-main">
         <HeroGo />
+        <FocusSwitch />
         <motion.details className="legend" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
           <summary>How to read a lesson</summary>
           <p>One screen at a time. The label at the top tells you what kind of screen it is.</p>
@@ -115,10 +141,7 @@ export function Home() {
               </li>
             ))}
           </ul>
-          <p className="legend-sub">
-            On the map, bars show how important each lesson is. Switch on <strong>Must know only</strong> at the top of a
-            map to keep just the must-know lessons, in every chapter.
-          </p>
+          <p className="legend-sub">On the map, bars show how important each lesson is.</p>
           <ul className="legend-list">
             {([3, 2, 1] as const).map((i) => (
               <li key={i}>

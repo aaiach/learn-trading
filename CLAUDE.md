@@ -47,10 +47,11 @@ every experienced trader knows. (The learner's personal context is kept out of t
 - Rate per **lesson**, not per screen: `imp: 3 | 2 | 1` → "Must know" / "Should know" / "Nice to know"
   (`IMPORTANCE` in `src/ds/kinds.ts`). Shown as 1–3 rising bars on the map and in the lesson popover; stars stay for
   results. Nothing is reordered.
-- "Must know only" switch (top of every chapter map, asked for 2026-10-20; one setting for all chapters, `src/focus.ts`):
+- "Must know only" switch (home page only, asked for 2026-10-20; one setting for all chapters, `src/focus.ts`):
   `focusView(ch, on)` keeps lessons rated 3. Map, unlock order, checkpoints, exam, Quick 10, mastery rings and the
-  home card all use it. A unit with no must-know lessons stays on the map as one dashed line. Checkpoint extras stay
-  if they cite a kept lesson's section (or a section no lesson owns). `npm test` checks every unit kept has ≥5
+  home card all use it. Either way it must feel like the whole course: never show hidden counts or "must know only"
+  labels; a unit with no must-know lessons simply doesn't appear. Checkpoint extras stay if they cite a kept
+  lesson's section (or a section no lesson owns). `npm test` checks every unit kept has ≥5
   checkpoint questions and the exam can draw 40.
 - 3 = basics every experienced trader knows cold, and the vocabulary they'd be judged on by investors, brokers and other traders.
 - 2 = useful when you run money: investors, risk, custody, trading tools. U.S. regulator names (SEC, CFTC, FINRA)

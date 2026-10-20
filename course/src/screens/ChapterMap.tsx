@@ -4,12 +4,12 @@ import { Check, Crown, Flag, Lock, Play, Star, Trophy, Unlock } from "lucide-rea
 import type { Chapter } from "../content/types.ts";
 import { type PathNode, pathOf } from "../course.ts";
 import { questionsOf } from "../content/ids.ts";
-import { focusView, setFocus, useFocus } from "../focus.ts";
+import { useChapterView } from "../focus.ts";
 import { navigate } from "../router.tsx";
 import { type ProgressStore, useProgress } from "../state/progress.ts";
 import { Button, ImpBars, ImpTag } from "../ds/ui.tsx";
 import { IMPORTANCE } from "../ds/kinds.ts";
-import { EASE_OUT, spring } from "../motion/tokens.ts";
+import { spring } from "../motion/tokens.ts";
 
 const ZIG = [0, 52, 78, 52, 0, -52, -78, -52];
 
@@ -19,48 +19,25 @@ function minutes(n: number) {
 
 export function ChapterMap({ ch, store }: { ch: Chapter; store: ProgressStore }) {
   const p = useProgress(store, (x) => x);
-  const focus = useFocus();
-  const view = focusView(ch, focus);
+  // "Must know only" (switched on the home page) narrows the chapter; the map shows whatever is left as the course
+  const view = useChapterView(ch);
   const path = pathOf(view, p);
   const [open, setOpen] = useState<string | null>(null);
   const currentRef = useRef<HTMLLIElement>(null);
-  const mounted = useRef(false);
 
   useEffect(() => {
     currentRef.current?.scrollIntoView({ block: "center" });
-    mounted.current = true;
   }, []);
 
-  const total = ch.units.reduce((n, u) => n + u.lessons.length, 0);
-  const kept = ch.units.reduce((n, u) => n + u.lessons.filter((l) => l.imp === 3).length, 0);
   const examN = Math.min(40, questionsOf(view).length);
 
   let zi = 0;
   return (
     <div className="col map" onClick={() => setOpen(null)}>
-      <FocusSwitch on={focus} kept={kept} total={total} />
-      <motion.div
-        key={focus ? "focus" : "all"}
-        initial={mounted.current ? { opacity: 0, y: 10 } : false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.28, ease: EASE_OUT }}
-      >
       {view.units.map((u, ui) => {
+        if (!u.lessons.length) return null;
         const nodes = path[ui].nodes;
         const done = nodes.filter((n) => n.type === "lesson" && n.status === "done").length;
-        const hidden = ch.units[ui].lessons.length - u.lessons.length;
-        if (!u.lessons.length)
-          return (
-            <section key={u.sec} className="unit unit-skip">
-              <header className="unit-banner">
-                <span className="unit-sec">{u.sec}</span>
-                <div className="unit-text">
-                  <h2>{u.title}</h2>
-                  <p>No must-know lessons · {hidden} hidden</p>
-                </div>
-              </header>
-            </section>
-          );
         return (
           <section key={u.sec} className="unit">
             <div className="unit-sticky">
@@ -69,7 +46,7 @@ export function ChapterMap({ ch, store }: { ch: Chapter; store: ProgressStore })
                 <div className="unit-text">
                   <h2>{u.title}</h2>
                   <p>
-                    pp. {u.pages} · {done}/{u.lessons.length} lessons{hidden > 0 && ` · ${hidden} hidden`}
+                    pp. {u.pages} · {done}/{u.lessons.length} lessons
                   </p>
                 </div>
                 <div className="unit-bar" aria-hidden>
@@ -102,7 +79,6 @@ export function ChapterMap({ ch, store }: { ch: Chapter; store: ProgressStore })
           </section>
         );
       })}
-      </motion.div>
       <section className="unit unit-final">
         <button type="button" className="exam-node" onClick={() => navigate(`/${ch.id}/exam`)}>
           <span className="exam-node-icon">
@@ -111,7 +87,7 @@ export function ChapterMap({ ch, store }: { ch: Chapter; store: ProgressStore })
           <span>
             <strong>Chapter exam</strong>
             <small>
-              {examN} questions · 35 to pass{focus && " · must know only"}
+              {examN} questions · 35 to pass
             </small>
           </span>
         </button>
@@ -235,30 +211,3 @@ function PathNodeView({
   );
 }
 
-/** "Must know only": one switch for every chapter. Off shows the whole book; on keeps lessons rated 3. */
-function FocusSwitch({ on, kept, total }: { on: boolean; kept: number; total: number }) {
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={on}
-      className={`focus-switch${on ? " on" : ""}`}
-      onClick={(e) => {
-        e.stopPropagation();
-        setFocus(!on);
-      }}
-      title={IMPORTANCE[3].hint}
-    >
-      <span className="focus-ico">
-        <ImpBars imp={3} size={16} />
-      </span>
-      <span className="focus-text">
-        <strong>Must know only</strong>
-        <small>{on ? `${kept} of ${total} lessons · ${total - kept} hidden` : `Show only the ${kept} must-know lessons`}</small>
-      </span>
-      <span className="switch" aria-hidden>
-        <motion.span className="switch-knob" initial={false} animate={{ x: on ? 20 : 0 }} transition={spring.ui} />
-      </span>
-    </button>
-  );
-}

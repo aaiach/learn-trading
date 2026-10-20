@@ -21,9 +21,7 @@ const secondsFor = (q: Question) => (q.kind === "order" || q.kind === "multi" ||
 
 export function ExamHub({ ch, store }: { ch: Chapter; store: ProgressStore }) {
   const exams = useProgress(store, (p) => p.exams);
-  const view = useChapterView(ch);
-  const focus = view !== ch;
-  const pool = questionsOf(view).length;
+  const pool = questionsOf(useChapterView(ch)).length;
   const best = exams.reduce((m, e) => Math.max(m, e.score), 0);
   return (
     <div className="col hub">
@@ -35,7 +33,7 @@ export function ExamHub({ ch, store }: { ch: Chapter; store: ProgressStore }) {
         <h2>Chapter {ch.num} · {ch.title}</h2>
         <ul className="exam-rules">
           <li>
-            <strong>{Math.min(EXAM_N, pool)}</strong> questions drawn from {focus ? "the must-know lessons" : "every section"}
+            <strong>{Math.min(EXAM_N, pool)}</strong> questions drawn from every section
           </li>
           <li>
             <strong>30 s</strong> per question (45 s for multi-part ones)

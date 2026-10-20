@@ -1271,14 +1271,14 @@
   margin-bottom: 22px;
 }
 
-/* ── "Must know only" switch (top of the map) ─────────────────────────────── */
+/* ── "Must know only" switch (home page) ──────────────────────────────── */
 .focus-switch {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 12px;
   width: 100%;
-  margin: 0 0 18px;
+  margin: 0;
   padding: 12px 16px;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -1339,22 +1339,6 @@
   border-radius: 50%;
   background: var(--surface);
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
-}
-/* a unit with no must-know lessons keeps its place, as one quiet line */
-.unit-skip .unit-banner {
-  padding: 10px 18px;
-  background: transparent;
-  border-style: dashed;
-  box-shadow: none;
-  opacity: 0.75;
-}
-.unit-skip .unit-sec {
-  font-size: 20px;
-  color: var(--ink-3);
-}
-.unit-skip .unit-text h2 {
-  font-size: 15px;
-  color: var(--ink-2);
 }
 .unit-sticky {
   /* sticks flush under the top bar; its background hides the path scrolling past the gap */
