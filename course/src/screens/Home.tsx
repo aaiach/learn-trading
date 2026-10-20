@@ -8,6 +8,7 @@ import { ThemeToggle } from "../theme.tsx";
 import { MasteryRing } from "./Shell.tsx";
 import { IMPORTANCE, KINDS } from "../ds/kinds.ts";
 import { Chip, ImpTag } from "../ds/ui.tsx";
+import { focusView, useChapterView, useFocus } from "../focus.ts";
 
 function ChapterRow({ num, title, page }: { num: number; title: string; page: number }) {
   const id = chapterId(num);
@@ -29,7 +30,7 @@ function ChapterRow({ num, title, page }: { num: number; title: string; page: nu
 function ReadyRow({ id, num, title, page }: { id: string; num: number; title: string; page: number }) {
   const store = storeFor(id);
   const p = useProgress(store, (x) => x);
-  const m = mastery(CHAPTERS[id], p);
+  const m = mastery(useChapterView(CHAPTERS[id]), p);
   return (
     <li>
       <Link to={`/${id}`} className="toc-row ready">
@@ -53,26 +54,29 @@ const BUILT = Object.keys(CHAPTERS).sort((a, b) => CHAPTERS[a].num - CHAPTERS[b]
 function useHeroChapter(): string {
   // BUILT never changes at runtime, so the hook order is stable
   const ps = BUILT.map((id) => useProgress(storeFor(id), (x) => x));
+  const focus = useFocus();
   let last = -1;
   ps.forEach((p, i) => {
     if (p.updatedAt && (last < 0 || p.updatedAt > ps[last].updatedAt)) last = i;
   });
   if (last < 0) return BUILT[0];
-  const allDone = CHAPTERS[BUILT[last]].units.every((u) => u.lessons.every((l) => ps[last].lessons[l.id]));
+  const allDone = focusView(CHAPTERS[BUILT[last]], focus).units.every((u) => u.lessons.every((l) => ps[last].lessons[l.id]));
   return allDone && last + 1 < BUILT.length ? BUILT[last + 1] : BUILT[last];
 }
 
 function HeroGo() {
   const id = useHeroChapter();
   const ch = CHAPTERS[id];
+  const view = useChapterView(ch);
   const p = useProgress(storeFor(id), (x) => x);
-  const m = mastery(ch, p);
+  const m = mastery(view, p);
   return (
     <Link to={`/${id}`} className="hero-go">
       <MasteryRing value={m} size={44} />
       <span className="hero-go-text">
         <small>
           {ch.part} · Chapter {ch.num}
+          {view !== ch && " · Must know only"}
         </small>
         <strong>{ch.title}</strong>
       </span>
@@ -111,7 +115,10 @@ export function Home() {
               </li>
             ))}
           </ul>
-          <p className="legend-sub">On the map, bars show how important each lesson is.</p>
+          <p className="legend-sub">
+            On the map, bars show how important each lesson is. Switch on <strong>Must know only</strong> at the top of a
+            map to keep just the must-know lessons, in every chapter.
+          </p>
           <ul className="legend-list">
             {([3, 2, 1] as const).map((i) => (
               <li key={i}>

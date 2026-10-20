@@ -7,7 +7,8 @@ import { describe, expect, it } from "vitest";
 import { CHAPTERS } from "../src/course.ts";
 import type { Cite, Step } from "../src/content/types.ts";
 import { isQuestion } from "../src/content/types.ts";
-import { qid } from "../src/content/ids.ts";
+import { qid, questionsOf } from "../src/content/ids.ts";
+import { focusView } from "../src/focus.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "source", "chapters");
 // `tables`: optional hand transcriptions (tagged <<p.N>>) of rotated tables that pdftotext garbles.
@@ -178,6 +179,16 @@ for (const [id, full] of Object.entries(CHAPTERS)) {
       for (const l of lessons) l.steps.forEach((s, i) => check(`${l.id}[${i}]`, s));
       for (const u of ch.units) (u.checkpoint ?? []).forEach((s, i) => check(`cp-${u.sec}[${i}]`, s));
       expect(bad, bad.join("\n")).toEqual([]);
+    });
+
+    it("\"must know only\" keeps every lesson rated 3, in book order, with enough questions", () => {
+      const v = focusView(full, true);
+      const want = full.units.flatMap((u) => u.lessons.filter((l) => l.imp === 3).map((l) => l.id));
+      expect(v.units.flatMap((u) => u.lessons.map((l) => l.id))).toEqual(want);
+      expect(want.length).toBeGreaterThan(0);
+      const thin = v.units.filter((u) => u.lessons.length && questionsOf(v, (_l, s) => s === u.sec).length < 5).map((u) => u.sec);
+      expect(thin, `checkpoints under 5 questions: ${thin.join(", ")}`).toEqual([]);
+      expect(questionsOf(v).length).toBeGreaterThanOrEqual(40);
     });
 
     it("each unit has enough questions for a checkpoint", () => {

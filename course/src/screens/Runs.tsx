@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import type { Chapter } from "../content/types.ts";
 import { isQuestion } from "../content/types.ts";
 import { qid, questionsOf, type QRef } from "../content/ids.ts";
-import { findLesson } from "../course.ts";
+import { CHECKPOINT_N, findLesson } from "../course.ts";
+import { useChapterView } from "../focus.ts";
 import { navigate } from "../router.tsx";
 import { type ProgressStore, today } from "../state/progress.ts";
 import { Player, type PlayItem, type RunResult } from "../player/Player.tsx";
@@ -82,12 +83,13 @@ function toItems(refs: QRef[]): PlayItem[] {
   return shuffle(refs).map((r) => ({ step: r.q, qid: r.id, sec: r.lesson.sec }));
 }
 
-export function CheckpointRun({ ch, store, sec }: { ch: Chapter; store: ProgressStore; sec: string }) {
+export function CheckpointRun({ ch: full, store, sec }: { ch: Chapter; store: ProgressStore; sec: string }) {
+  const ch = useChapterView(full);
   const unit = ch.units.find((u) => u.sec === sec);
   const items = useMemo(() => {
     if (!unit) return [];
     const pool = questionsOf(ch, (_l, us) => us === sec);
-    return toItems(pickQuestions(pool, 10, store));
+    return toItems(pickQuestions(pool, CHECKPOINT_N, store));
   }, [ch, sec, unit, store]);
   if (!unit || !items.length) return <NotFound chId={ch.id} />;
   return (
@@ -115,6 +117,7 @@ export function CheckpointRun({ ch, store, sec }: { ch: Chapter; store: Progress
 }
 
 export function ReviewRun({ ch, store, kind }: { ch: Chapter; store: ProgressStore; kind: "mistakes" | "quick" }) {
+  const view = useChapterView(ch);
   const items = useMemo(() => {
     const p = store.get();
     if (kind === "mistakes") {
@@ -122,10 +125,11 @@ export function ReviewRun({ ch, store, kind }: { ch: Chapter; store: ProgressSto
       return toItems(pool.slice(0, 10));
     }
     const doneIds = new Set(Object.keys(p.lessons));
-    let pool = questionsOf(ch, (l) => doneIds.has(l.id));
-    if (pool.length < 5) pool = questionsOf(ch, (_l, us) => us === ch.units[0].sec);
+    let pool = questionsOf(view, (l) => doneIds.has(l.id));
+    const first = view.units.find((u) => u.lessons.length) ?? ch.units[0];
+    if (pool.length < 5) pool = questionsOf(view, (_l, us) => us === first.sec);
     return toItems(pickQuestions(pool, 10, store));
-  }, [ch, store, kind]);
+  }, [ch, view, store, kind]);
   if (!items.length) return <NotFound chId={ch.id} msg="Nothing to review yet." back="practice" />;
   return (
     <Player

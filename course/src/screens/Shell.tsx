@@ -6,6 +6,7 @@ import { Link } from "../router.tsx";
 import { type ProgressStore, streak, useProgress } from "../state/progress.ts";
 import { ThemeToggle } from "../theme.tsx";
 import { mastery } from "../course.ts";
+import { useChapterView } from "../focus.ts";
 
 export type Tab = "learn" | "practice" | "exam";
 
@@ -23,7 +24,7 @@ export function ChapterShell({
   const xp = useProgress(store, (p) => p.xp);
   const days = useProgress(store, (p) => p.days);
   const prog = useProgress(store, (p) => p);
-  const m = mastery(ch, prog);
+  const m = mastery(useChapterView(ch), prog);
   const s = streak(days);
   const tabs: { id: Tab; label: string; icon: typeof Route; to: string }[] = [
     { id: "learn", label: "Learn", icon: Route, to: `/${ch.id}` },
