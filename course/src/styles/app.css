@@ -1438,6 +1438,11 @@
   font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
+.pnode-label small .imp-bars {
+  margin-left: 5px;
+  vertical-align: -1px;
+  color: var(--ink-2);
+}
 .pop {
   position: absolute;
   top: 100%;
@@ -1633,6 +1638,43 @@
   gap: 10px;
   font-size: 13.5px;
   color: var(--ink-2);
+}
+.legend .legend-sub {
+  margin: 18px 0 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+/* ── Lesson importance (bars; stars are for results) ─────────────────────── */
+.imp-bars {
+  flex: none;
+}
+.imp-bars rect {
+  fill: var(--line-strong);
+}
+.imp-bars rect.on {
+  fill: currentColor;
+}
+.imp-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.imp-tag.imp-3 {
+  color: var(--ink);
+  border-color: var(--line-strong);
 }
 .toc-part-title {
   margin: 0 0 8px;

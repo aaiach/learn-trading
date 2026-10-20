@@ -11,7 +11,7 @@ import {
   CalendarClock,
   type LucideIcon,
 } from "lucide-react";
-import type { Step } from "../content/types.ts";
+import type { Imp, Step } from "../content/types.ts";
 
 export type Tone = "def" | "idea" | "book" | "see" | "prac" | "game" | "recap" | "today";
 
@@ -26,6 +26,13 @@ export const KINDS: Record<Tone, KindInfo> = {
   game: { tone: "game", label: "Game", icon: Gamepad2, hint: "A scored mini-game" },
   recap: { tone: "recap", label: "Remember", icon: ListChecks, hint: "The lesson in three lines" },
   today: { tone: "today", label: "Not in the book · today", icon: CalendarClock, hint: "What changed since 2003" },
+};
+
+/** Lesson importance, shown as 1–3 bars (stars are taken: they score how a lesson went). */
+export const IMPORTANCE: Record<Imp, { label: string; hint: string }> = {
+  3: { label: "Must know", hint: "Basics every experienced trader knows cold" },
+  2: { label: "Should know", hint: "Useful when you run money: investors, risk, custody" },
+  1: { label: "Nice to know", hint: "History, narrow U.S. rules, rare cases" },
 };
 
 export function toneOf(step: Step): Tone {

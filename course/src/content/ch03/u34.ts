@@ -136,6 +136,7 @@ const L_WEALTH: Lesson = {
   sec: "3.4.1",
   title: "Where the wealth is",
   pages: "44–45",
+  imp: 1,
   steps: [
     {
       kind: "idea",
@@ -201,6 +202,7 @@ const L_LIQUIDITY: Lesson = {
   sec: "3.4.1",
   title: "Many instruments, little trading",
   pages: "45–47",
+  imp: 2,
   steps: [
     { kind: "idea", title: "More instruments, thinner markets", body: "Volume depends partly on how many instruments there are. When a market has **a great number of different instruments**, each one tends to be **illiquid**.", cite: MP_INSTR },
     {
@@ -288,6 +290,7 @@ const L_LISTING: Lesson = {
   sec: "3.4.2",
   title: "Getting a stock listed",
   pages: "46–47",
+  imp: 2,
   steps: [
     { kind: "definition", term: "Listing", body: "A corporation **applies** to an exchange to have its stock traded there. Exchanges list companies that **meet their standards** and **pay listing fees**.", cite: LIST },
     { kind: "definition", term: "Listing standards", body: "Minimums a company must meet: **capital value**, **number of shareholders** and **financial strength**.", cite: LIST_STD },
@@ -353,6 +356,7 @@ const L_US: Lesson = {
   sec: "3.4.2.1",
   title: "Where a U.S. stock trades",
   pages: "48–49",
+  imp: 2,
   steps: [
     { kind: "definition", term: "Primary listing market", body: "The exchange where a stock is **primarily listed**. In the U.S.: the **NYSE**, the **American Stock Exchange** and **Nasdaq**.", cite: PRIMARY },
     { kind: "definition", term: "Listed stocks", body: "Stocks listed at the **NYSE** or the **American Stock Exchange**. Nasdaq stocks, once “over-the-counter” stocks, are now just Nasdaq stocks.", cite: LISTED },
@@ -434,6 +438,7 @@ const L_VOLUME: Lesson = {
   sec: "3.4.2",
   title: "Counting volume",
   pages: "48",
+  imp: 2,
   steps: [
     { kind: "idea", title: "Volume figures don't compare", body: "Markets where **dealers stand between** public traders report **more volume** than markets that match public buyers and sellers directly.", cite: V_COMPARE },
     {
@@ -499,6 +504,7 @@ const L_WORLD: Lesson = {
   sec: "3.4.2.2",
   title: "Growth and consolidation",
   pages: "47–52",
+  imp: 1,
   steps: [
     { kind: "idea", title: "Stock markets boomed", body: "Late in the twentieth century, firms chose **equity over bank loans** and governments **privatized** companies, so stock markets grew worldwide.", cite: GROW },
     { kind: "idea", title: "…and merged", body: "Many exchanges **consolidated** to take advantage of **economies of scale**.", cite: CONSOL },
@@ -564,6 +570,7 @@ const L_OPTIONS: Lesson = {
   sec: "3.4.3",
   title: "Equity options markets",
   pages: "50–54",
+  imp: 2,
   steps: [
     { kind: "idea", title: "One clearinghouse for every U.S. options exchange", body: "The **Options Clearing Corporation (OCC)** clears every contract at all five U.S. options exchanges, so you can **buy at one exchange and sell at another**.", cite: OCC },
     {
@@ -625,6 +632,7 @@ const L_FUTURES: Lesson = {
   sec: "3.4.4",
   title: "Futures markets",
   pages: "54–57",
+  imp: 3,
   steps: [
     { kind: "idea", title: "Futures exchanges don't share contracts", body: "Most futures exchanges have **their own clearinghouse**, so they **don't compete** to trade the same contracts. Each designs **new** contracts to attract traders.", cite: OWN_CH },
     {
@@ -696,6 +704,7 @@ const L_BONDS: Lesson = {
   sec: "3.4.5",
   title: "Bonds and Treasuries",
   pages: "54–58",
+  imp: 2,
   steps: [
     { kind: "idea", title: "Bonds trade over the counter", body: "Most **corporate and municipal bonds** trade **OTC**, in investment and commercial banks. Exchange bond volume is trivial.", cite: OTC_BONDS },
     {
@@ -767,6 +776,7 @@ const L_FX: Lesson = {
   sec: "3.4.7",
   title: "Swaps and currencies",
   pages: "47, 58–59",
+  imp: 1,
   steps: [
     { kind: "idea", title: "Swaps and currencies trade OTC", body: "Swaps and spot currencies trade mostly **over the counter** at banks. Brokers and data providers help traders **find counterparts** more cheaply.", cite: SEARCH },
     { kind: "idea", title: "Why currency volume is huge", body: "International trade and cross-border investment need **currency conversions**, and dealers trade **several times with each other** for every client trade.", cite: FX_VOL },

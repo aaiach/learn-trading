@@ -116,6 +116,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3",
     title: "What traders trade",
     pages: "38",
+    imp: 2,
     steps: [
       { kind: "definition", term: "Trading instruments", body: "Everything traders trade: **securities, contracts, commodities and currencies**.", cite: INSTR },
       {
@@ -205,6 +206,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.1",
     title: "Real assets",
     pages: "39",
+    imp: 2,
     steps: [
       { kind: "definition", term: "Real assets", body: "Physical things and ideas you can own: **commodities, real estate, machines, patents** and other intellectual property.", cite: REAL },
       { kind: "definition", term: "Pollution credits", body: "Rights to **emit** a set quantity of a given type of pollution. They are real assets too.", cite: POLLUTION },
@@ -282,6 +284,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2",
     title: "Financial assets",
     pages: "39",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Financial assets", body: "Instruments that represent **ownership** of real assets and of the **cash flows** those assets produce.", cite: FIN_ASSETS },
       {
@@ -368,6 +371,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2",
     title: "Primary, secondary and spot markets",
     pages: "39",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Primary market", body: "Where an issue trades when the issuer **first creates and sells** it.", cite: PRIMARY, },
       { kind: "definition", term: "Secondary market", body: "Where all **later** trading in the issue happens.", cite: PRIMARY },
@@ -441,6 +445,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2",
     title: "Underwriters and offerings",
     pages: "39",
+    imp: 2,
     steps: [
       { kind: "definition", term: "Underwriters", body: "**Broker-dealers at investment banks** who find buyers for an issuer's new securities.", cite: UW },
       { kind: "definition", term: "Best efforts offering", body: "The underwriter acts **strictly as a broker**: it looks for buyers, nothing more.", cite: BEST },
@@ -519,6 +524,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2.1",
     title: "Stocks, preferred, ADRs, ETFs, REITs",
     pages: "39–40",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Stocks", body: "Ownership of a corporation's **assets, net of its liabilities**. Their value follows assets, liabilities and income.", cite: STOCKS },
       { kind: "idea", title: "Stocks also price the future", body: "Stock values depend critically on how well traders expect **managers will use** the company's assets.", cite: MANAGERS },
@@ -598,6 +604,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2.1",
     title: "Bonds, quotes and credit quality",
     pages: "40",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Bonds", body: "**Debt securities.** A debtor creates a bond when it **borrows money**.", cite: BONDS },
       {
@@ -686,6 +693,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2.1",
     title: "Treasuries, zeros and stripping",
     pages: "40",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Treasury bills, notes and bonds", body: "**Debt securities issued by a country**, told apart by how long they run.", cite: TREAS },
       {
@@ -775,6 +783,7 @@ export const U33A_LESSONS: Lesson[] = [
     sec: "3.3.2.1",
     title: "Mortgage-backed securities and CMOs",
     pages: "41",
+    imp: 2,
     steps: [
       { kind: "definition", term: "Mortgage-backed securities", body: "Bondlike instruments that **receive the mortgage payments** borrowers make.", cite: MBS },
       { kind: "definition", term: "Mortgage pool", body: "The specified set of mortgages that **backs** a mortgage-backed security.", cite: POOL },

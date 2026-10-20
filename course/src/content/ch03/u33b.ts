@@ -94,6 +94,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.3",
     title: "What a derivative is",
     pages: "41",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Derivative contracts", body: "Contracts whose value **derives** from the value of an **underlying** instrument.", cite: D_DEF },
       { kind: "idea", title: "Four kinds", body: "**Forwards**, **futures**, **options** and **swaps**. You'll meet each one in this unit.", cite: D_TYPES },
@@ -177,6 +178,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.3",
     title: "Physical or cash settlement",
     pages: "41–42",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Physically settled", body: "The seller **delivers the underlying**; the buyer pays the **agreed price**.", cite: PHYS },
       { kind: "definition", term: "Cash settled", body: "The seller delivers the underlying's **cash value** instead of the thing itself, and the buyer pays the agreed price.", cite: CASH },
@@ -251,6 +253,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.3.1",
     title: "Forwards and futures",
     pages: "41–42",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Forward contracts", body: "Contracts for the **future sale** of a commodity: physical, like pork bellies, or financial, like a currency.", cite: FWD },
       { kind: "quote", lead: "The book's example, from the box “A Tomato Forward”:", cite: TOMATO, mark: ["fixed price", "in the future"] },
@@ -342,6 +345,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.3.1",
     title: "Options: a right, not an obligation",
     pages: "42",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Option", body: "The **right, but not the obligation**, to buy or sell an underlying at a fixed price.", cite: OPT },
       { kind: "definition", term: "Writer", body: "The trader who **sold** the option. The option is written upon the underlying.", cite: WRITER },
@@ -433,6 +437,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.3.1",
     title: "Futures options, swaps and swaptions",
     pages: "42–43",
+    imp: 3,
     steps: [
       { kind: "definition", term: "Futures option contract", body: "An option **written on a futures contract**. A call gives the right to buy the futures at the strike.", cite: FOPT_CALL },
       {
@@ -511,6 +516,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.4",
     title: "Insurance or gambling?",
     pages: "43",
+    imp: 2,
     steps: [
       { kind: "idea", title: "Both pay on future events", body: "Insurance and gambling contracts derive their values from the **outcomes of future events**, like whether a building burns down.", cite: INS_FIRE },
       { kind: "idea", title: "The difference is the reason", body: "What separates insurance from gambling is not the contract but **why people buy it**.", cite: INS_WHY },
@@ -582,6 +588,7 @@ export const U33B_LESSONS: Lesson[] = [
     sec: "3.3.5",
     title: "Hybrids: two instruments in one",
     pages: "43–44",
+    imp: 2,
     steps: [
       { kind: "idea", title: "Some instruments are two things at once", body: "**Hybrid contracts** embody elements of more than one type of instrument, so they defy easy classification.", cite: HYB },
       { kind: "definition", term: "Oil-linked bonds", body: "Bonds whose **interest depends on the price of oil**. A financial asset with a derivative part.", cite: OIL },

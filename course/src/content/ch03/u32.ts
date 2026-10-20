@@ -115,6 +115,7 @@ export const U32: Unit = {
       sec: "3.2.1",
       title: "Exchanges: where traders meet",
       pages: "34–35",
+      imp: 3,
       steps: [
         {
           kind: "idea",
@@ -202,6 +203,7 @@ export const U32: Unit = {
       sec: "3.2.1",
       title: "ECNs, demutualization and OTC",
       pages: "35",
+      imp: 3,
       steps: [
         {
           kind: "definition",
@@ -301,6 +303,7 @@ export const U32: Unit = {
       sec: "3.2.2.1",
       title: "Clearing: do the records match?",
       pages: "35",
+      imp: 2,
       steps: [
         {
           kind: "idea",
@@ -400,6 +403,7 @@ export const U32: Unit = {
       sec: "3.2.2.2",
       title: "Settlement agents",
       pages: "36",
+      imp: 3,
       steps: [
         {
           kind: "definition",
@@ -480,6 +484,7 @@ export const U32: Unit = {
       sec: "3.2.2.2",
       title: "Net settlement",
       pages: "36",
+      imp: 2,
       steps: [
         {
           kind: "definition",
@@ -569,6 +574,7 @@ export const U32: Unit = {
       sec: "3.2.2.2",
       title: "T+3 and cash settlement",
       pages: "36",
+      imp: 3,
       steps: [
         {
           kind: "definition",
@@ -657,6 +663,7 @@ export const U32: Unit = {
       sec: "3.2.2.3",
       title: "Clearinghouses: the guarantee",
       pages: "36",
+      imp: 3,
       steps: [
         {
           kind: "definition",
@@ -741,6 +748,7 @@ export const U32: Unit = {
       sec: "3.2.2.3",
       title: "Variation margin, day by day",
       pages: "36–37, 42",
+      imp: 3,
       steps: [
         {
           kind: "definition",
@@ -844,6 +852,7 @@ export const U32: Unit = {
       sec: "3.2.2.4",
       title: "Depositories and custodians",
       pages: "38",
+      imp: 3,
       steps: [
         {
           kind: "definition",
@@ -924,6 +933,7 @@ export const U32: Unit = {
       sec: "3.2.2",
       title: "One trade, start to finish",
       pages: "37",
+      imp: 2,
       steps: [
         {
           kind: "idea",

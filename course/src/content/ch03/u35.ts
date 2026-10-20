@@ -128,6 +128,7 @@ export const U35: Unit = {
       sec: "3.5",
       title: "Rules that help, rules that hinder",
       pages: "59–60",
+      imp: 1,
       steps: [
         { kind: "idea", title: "Regulators make trading possible", body: "Regulators **create and enforce rules that facilitate trading**. Most traders want markets **well regulated, but not excessively**.", cite: FACILITATE },
         { kind: "idea", title: "What good rules ensure", body: "Traders **communicate** clearly, nobody **defrauds** anyone, and things are **as they appear**.", cite: GOOD },
@@ -205,6 +206,7 @@ export const U35: Unit = {
       sec: "3.5.1",
       title: "Who writes and enforces the rules",
       pages: "60",
+      imp: 1,
       steps: [
         { kind: "idea", title: "Legislatures pass the laws", body: "Legislatures **enact laws** that regulate markets, then **delegate enforcement** to public and private agencies.", cite: DIVIDE },
         { kind: "idea", title: "Agencies get the power to write rules", body: "Delegated powers let agencies **write regulations with the force of law** and **enforce** them in judicial proceedings.", cite: FORCE_OF_LAW },
@@ -268,6 +270,7 @@ export const U35: Unit = {
       sec: "3.5.1.1",
       title: "SEC and CFTC",
       pages: "60–62",
+      imp: 2,
       steps: [
         { kind: "definition", term: "Governmental regulatory agencies", body: "Government bodies that **oversee traders and trading practices**. Usually **independent commissions**.", cite: GOV },
         {
@@ -353,6 +356,7 @@ export const U35: Unit = {
       sec: "3.5.1.1",
       title: "What the agencies can do",
       pages: "61–63",
+      imp: 2,
       steps: [
         { kind: "idea", title: "They write the detailed rules", body: "The SEC and CFTC **write regulations** that interpret and implement the laws they oversee.", cite: WRITE },
         { kind: "idea", title: "They enforce them", body: "Through **administrative hearings**, or by asking the **Department of Justice** to prosecute in federal court.", cite: POWERS },
@@ -429,6 +433,7 @@ export const U35: Unit = {
       sec: "3.5.1.1",
       title: "The SEC's mission and its trade-offs",
       pages: "61",
+      imp: 1,
       steps: [
         {
           kind: "quote",
@@ -494,6 +499,7 @@ export const U35: Unit = {
       sec: "3.5.1.1",
       title: "Turf wars: SEC vs CFTC",
       pages: "63",
+      imp: 1,
       steps: [
         {
           kind: "idea",
@@ -568,6 +574,7 @@ export const U35: Unit = {
       sec: "3.5.1.2",
       title: "Self-regulatory organizations",
       pages: "63–65",
+      imp: 2,
       steps: [
         { kind: "definition", term: "Self-regulatory organizations", aka: ["SROs"], body: "Organizations that **regulate their own members**.", cite: SRO_DEF },
         {
@@ -653,6 +660,7 @@ export const U35: Unit = {
       sec: "3.5.1.2",
       title: "Buttonwood and onions",
       pages: "64–65",
+      imp: 1,
       steps: [
         { kind: "quote", lead: "The NYSE itself began as a self-regulatory agreement:", cite: BTW_ORIGIN, mark: ["1792", "regulate their commissions"] },
         {
@@ -742,6 +750,7 @@ export const U35: Unit = {
       sec: "3.5.1.3",
       title: "Other private regulators",
       pages: "65–66",
+      imp: 2,
       steps: [
         { kind: "definition", term: "FASB", aka: ["Financial Accounting Standards Board"], body: "Sets the **accounting standards** firms must use to report their accounts.", cite: FASB },
         {
@@ -820,6 +829,7 @@ export const U35: Unit = {
       sec: "3.5.2",
       title: "Across borders",
       pages: "66",
+      imp: 1,
       steps: [
         {
           kind: "definition",
@@ -898,6 +908,7 @@ export const U35: Unit = {
       sec: "3.7",
       title: "Some points to remember",
       pages: "66",
+      imp: 3,
       steps: [
         { kind: "idea", title: "Point 1 · Two sides", body: "The **buy side** buys liquidity services. The **sell side** provides them.", cite: P1 },
         { kind: "idea", title: "Point 2 · Dealers and brokers", body: "**Dealers** trade for their own account. **Brokers** trade for others.", cite: P2 },

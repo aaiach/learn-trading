@@ -41,6 +41,18 @@ Chapter → units (top-level book sections, e.g. 3.1) → lessons (subsections, 
 - Each unit needs ≥12 questions (lessons + `checkpoint` extras) for its checkpoint; the exam draws 40 from all units.
 - `fill`: one `___` per blank, ≥2 distractors, unique bank words. `classify`: ≤4 buckets. `match`: 3–6 short pairs.
 
+## Lesson importance (`imp` on every lesson; asked for 2026-10-20)
+Top priority for the learner: the vocabulary and definitions to sound fluent in finance. Hard rule: never skip the basics
+every experienced trader knows. (The learner's personal context is kept out of this public repo.)
+- Rate per **lesson**, not per screen: `imp: 3 | 2 | 1` → "Must know" / "Should know" / "Nice to know"
+  (`IMPORTANCE` in `src/ds/kinds.ts`). Shown as 1–3 rising bars on the map and in the lesson popover; stars stay for
+  results. Display only: nothing is skipped or reordered.
+- 3 = basics every experienced trader knows cold, and the vocabulary they'd be judged on by investors, brokers and other traders.
+- 2 = useful when you run money: investors, risk, custody, trading tools. U.S. regulator names (SEC, CFTC, FINRA)
+  sit here.
+- 1 = history, narrow U.S. rules, rare cases. Never down-rate a lesson for not fitting a market or style.
+- `npm test` fails if a lesson has no rating.
+
 ## Motion rules
 - Vocabulary in `course/src/motion/tokens.ts` (`spring.ui/soft/travel/fill`, `screen`, `EASE_*`) and `AutoHeight`/`Swap`.
 - Scenes (`course/src/scene/index.tsx`): `Stage` (400 wide), `Node`, `Edge`, `Token`, `Txt`, `Num`, `Bar`, `Ping`,
@@ -83,7 +95,7 @@ Chapter → units (top-level book sections, e.g. 3.1) → lessons (subsections, 
 
 ## Chapters built
 - Ch. 3 The Trading Industry — `course/src/content/ch03/` (http://localhost:5317/ch03), built 2026-10-19.
-  53 lessons / 583 screens: 235 questions, 112 definitions, 59 scenes (244 beats), 34 sort/match, 7 games, 7 today
+  53 lessons (24 must know, 20 should know, 9 nice to know) / 583 screens: 235 questions, 112 definitions, 59 scenes (244 beats), 34 sort/match, 7 games, 7 today
   notes. Units: u31 (6 lessons), u32 (10), u33a + u33b (9 + 7, one unit 3.3), u34 (10), u35 (11, incl. 3.7 recap).
   Games: TradingPit (long/short), ClearingDesk, ClassRush, Waterfall (CMO), OdaxGame, WealthGuess, JurisdictionRush.
 - Building a unit in parallel with forks worked: give each fork its own `uNN.ts` / `illus/uNN.tsx` / games files,

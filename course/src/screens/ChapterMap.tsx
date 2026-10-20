@@ -5,7 +5,8 @@ import type { Chapter } from "../content/types.ts";
 import { type PathNode, pathOf } from "../course.ts";
 import { navigate } from "../router.tsx";
 import { type ProgressStore, useProgress } from "../state/progress.ts";
-import { Button } from "../ds/ui.tsx";
+import { Button, ImpBars, ImpTag } from "../ds/ui.tsx";
+import { IMPORTANCE } from "../ds/kinds.ts";
 import { spring } from "../motion/tokens.ts";
 
 const ZIG = [0, 52, 78, 52, 0, -52, -78, -52];
@@ -122,6 +123,7 @@ function PathNodeView({
     st === "locked" ? Lock : isCp ? (node.passed ? Crown : Trophy) : st === "done" ? Check : st === "current" ? Play : Star;
   const label = node.type === "lesson" ? node.lesson.title : `Checkpoint ${node.unitSec}`;
   const sub = node.type === "lesson" ? node.lesson.sec : node.passed ? `Best ${node.best}%` : "10 questions";
+  const imp = node.type === "lesson" ? node.lesson.imp : undefined;
   const start = () => {
     if (node.type === "lesson") navigate(`/${chId}/l/${node.lesson.id}`);
     else navigate(`/${chId}/cp/${node.unitSec}`);
@@ -150,7 +152,7 @@ function PathNodeView({
         }}
         whileTap={st !== "locked" ? { y: 4 } : undefined}
         transition={spring.ui}
-        aria-label={`${label}${st === "locked" ? " (locked)" : ""}`}
+        aria-label={`${label}${imp ? `, ${IMPORTANCE[imp].label.toLowerCase()}` : ""}${st === "locked" ? " (locked)" : ""}`}
         aria-expanded={open}
       >
         <Icon size={isCp ? 28 : 26} strokeWidth={2.6} />
@@ -163,7 +165,10 @@ function PathNodeView({
         </span>
       )}
       <span className="pnode-label">
-        <small>{sub}</small>
+        <small>
+          {sub}
+          {imp && <ImpBars imp={imp} size={11} />}
+        </small>
         {label}
       </span>
       <AnimatePresence>
@@ -181,6 +186,7 @@ function PathNodeView({
               {node.type === "lesson" ? `§ ${node.lesson.sec} · pp. ${node.lesson.pages}` : `Unit ${node.unitSec}`}
             </p>
             <h3>{label}</h3>
+            {imp && <ImpTag imp={imp} />}
             <p className="pop-meta">
               {node.type === "lesson"
                 ? `${node.lesson.steps.length} screens · about ${minutes(node.lesson.steps.length)} min`

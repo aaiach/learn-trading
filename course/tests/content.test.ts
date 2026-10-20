@@ -106,6 +106,11 @@ for (const [id, ch] of Object.entries(CHAPTERS)) {
       expect(new Set(ids).size).toBe(ids.length);
     });
 
+    it("every lesson has an importance rating (1–3)", () => {
+      const bad = lessons.filter((l) => l.imp !== 1 && l.imp !== 2 && l.imp !== 3).map((l) => l.id);
+      expect(bad, bad.join("\n")).toEqual([]);
+    });
+
     it("every lesson teaches, illustrates and tests", () => {
       const bad: string[] = [];
       for (const l of lessons) {

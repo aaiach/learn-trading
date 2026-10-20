@@ -61,6 +61,7 @@ export const U31: Unit = {
       sec: "3.1",
       title: "For yourself or for a client",
       pages: "32",
+      imp: 3,
       steps: [
         { kind: "definition", term: "Traders", body: "People who trade. They arrange their **own** trades, have others arrange trades **for them**, or arrange trades **for others**.", cite: TRADERS },
         { kind: "definition", term: "Proprietary traders", body: "Trade for their **own accounts**. The gain or loss is theirs.", cite: PROP },
@@ -136,6 +137,7 @@ export const U31: Unit = {
       sec: "3.1",
       title: "Long and short",
       pages: "32",
+      imp: 3,
       steps: [
         { kind: "definition", term: "Long position", body: "You **own** something. You profit when the price **rises**: buy low, sell high.", cite: LONG },
         {
@@ -218,6 +220,7 @@ export const U31: Unit = {
       sec: "3.1",
       title: "Buy side and sell side",
       pages: "32",
+      imp: 3,
       steps: [
         { kind: "idea", title: "The industry has two sides", body: "The **buy side** buys exchange services. The **sell side** sells them.", cite: SIDES },
         { kind: "definition", term: "Liquidity", body: "The ability to trade **when you want to trade**. It is the most important exchange service.", cite: LIQ },
@@ -281,6 +284,7 @@ export const U31: Unit = {
       sec: "3.1.1",
       title: "Why the buy side trades",
       pages: "32–33",
+      imp: 2,
       steps: [
         {
           kind: "idea",
@@ -368,6 +372,7 @@ export const U31: Unit = {
       sec: "3.1.1",
       title: "Who's who on the buy side",
       pages: "33",
+      imp: 3,
       steps: [
         { kind: "definition", term: "Investment sponsors", body: "Institutions that **hold and invest money**: pension funds, mutual funds, trusts, endowments and foundations.", cite: SPONSORS },
         {
@@ -442,6 +447,7 @@ export const U31: Unit = {
       sec: "3.1.2",
       title: "The sell side: dealers and brokers",
       pages: "33–34",
+      imp: 3,
       steps: [
         { kind: "idea", title: "The sell side provides exchange services", body: "**Dealers** and **brokers** both help buy-side traders trade when they want to trade.", cite: SELL_SIDE },
         { kind: "definition", term: "Dealers", body: "Trade **with** their clients whenever the clients want to trade. They profit by **buying low and selling high**.", cite: DEALERS },

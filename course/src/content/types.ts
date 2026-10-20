@@ -96,8 +96,13 @@ export type Lesson = {
   sec: string;
   title: string;
   pages: string;
+  /** How important the lesson is for the learner (see `IMPORTANCE` in src/ds/kinds.ts). Every real lesson has one. */
+  imp?: Imp;
   steps: Step[];
 };
+
+/** 3 = must know (basics every experienced trader knows), 2 = should know, 1 = nice to know. */
+export type Imp = 1 | 2 | 3;
 
 export type Unit = {
   /** Book section, e.g. "3.1". */

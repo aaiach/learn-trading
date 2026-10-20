@@ -1,7 +1,7 @@
 import { type ReactNode, Fragment } from "react";
 import { motion } from "motion/react";
-import { KINDS, type Tone } from "./kinds.ts";
-import type { Cite } from "../content/types.ts";
+import { IMPORTANCE, KINDS, type Tone } from "./kinds.ts";
+import type { Cite, Imp } from "../content/types.ts";
 import { spring } from "../motion/tokens.ts";
 
 /** The kind label every screen starts with: same colour, icon and words everywhere. */
@@ -13,6 +13,27 @@ export function Chip({ tone, verb, small }: { tone: Tone; verb?: string; small?:
       <Icon size={small ? 13 : 15} strokeWidth={2.4} aria-hidden />
       <span>{k.label}</span>
       {verb && <span className="chip-verb">· {verb}</span>}
+    </span>
+  );
+}
+
+/** Lesson importance as three rising bars, filled up to `imp`. */
+export function ImpBars({ imp, size = 12 }: { imp: Imp; size?: number }) {
+  return (
+    <svg className={`imp-bars imp-${imp}`} width={size} height={size} viewBox="0 0 12 12" aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <rect key={i} x={i * 4.5} y={8 - i * 3.5} width={3} height={4 + i * 3.5} rx={1} className={i < imp ? "on" : ""} />
+      ))}
+    </svg>
+  );
+}
+
+/** Bars plus the words: "Must know", "Should know", "Nice to know". */
+export function ImpTag({ imp }: { imp: Imp }) {
+  return (
+    <span className={`imp-tag imp-${imp}`} title={IMPORTANCE[imp].hint}>
+      <ImpBars imp={imp} />
+      {IMPORTANCE[imp].label}
     </span>
   );
 }

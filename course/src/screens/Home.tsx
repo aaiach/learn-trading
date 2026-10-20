@@ -6,8 +6,8 @@ import { Link } from "../router.tsx";
 import { storeFor, useProgress } from "../state/progress.ts";
 import { ThemeToggle } from "../theme.tsx";
 import { MasteryRing } from "./Shell.tsx";
-import { KINDS } from "../ds/kinds.ts";
-import { Chip } from "../ds/ui.tsx";
+import { IMPORTANCE, KINDS } from "../ds/kinds.ts";
+import { Chip, ImpTag } from "../ds/ui.tsx";
 
 function ChapterRow({ num, title, page }: { num: number; title: string; page: number }) {
   const id = chapterId(num);
@@ -93,6 +93,15 @@ export function Home() {
               <li key={k.tone}>
                 <Chip tone={k.tone} small />
                 <span>{k.hint}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="legend-sub">On the map, bars show how important each lesson is.</p>
+          <ul className="legend-list">
+            {([3, 2, 1] as const).map((i) => (
+              <li key={i}>
+                <ImpTag imp={i} />
+                <span>{IMPORTANCE[i].hint}</span>
               </li>
             ))}
           </ul>
