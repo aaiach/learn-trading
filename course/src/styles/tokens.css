@@ -45,6 +45,9 @@
   --node-line: #cfd6e3;
   --cash: #18a957;
   --asset: #2f6bff;
+  /* Order books (ch. 4+): bids blue, offers orange; green/red stay reserved for right/wrong */
+  --bid: #2f6bff;   --bid-soft: #eaf0ff;   --bid-ink: #1d4ed8;
+  --ask: #e8661c;   --ask-soft: #fff0e4;   --ask-ink: #b04a0a;
 
   --r-sm: 10px;
   --r: 14px;
@@ -89,6 +92,8 @@
   --node-line: #364256;
   --cash: #2fcf75;
   --asset: #6b95ff;
+  --bid: #6b95ff;   --bid-soft: #17244a;   --bid-ink: #a9c1ff;
+  --ask: #ff8f45;   --ask-soft: #34200f;   --ask-ink: #ffbf8f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -129,5 +134,7 @@
     --node-line: #364256;
     --cash: #2fcf75;
     --asset: #6b95ff;
+    --bid: #6b95ff;   --bid-soft: #17244a;   --bid-ink: #a9c1ff;
+    --ask: #ff8f45;   --ask-soft: #34200f;   --ask-ink: #ffbf8f;
   }
 }

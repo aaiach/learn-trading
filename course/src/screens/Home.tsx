@@ -47,8 +47,23 @@ function ReadyRow({ id, num, title, page }: { id: string; num: number; title: st
   );
 }
 
+const BUILT = Object.keys(CHAPTERS).sort((a, b) => CHAPTERS[a].num - CHAPTERS[b].num);
+
+/** The chapter the learner touched last; once all its lessons are done, the next built chapter. */
+function useHeroChapter(): string {
+  // BUILT never changes at runtime, so the hook order is stable
+  const ps = BUILT.map((id) => useProgress(storeFor(id), (x) => x));
+  let last = -1;
+  ps.forEach((p, i) => {
+    if (p.updatedAt && (last < 0 || p.updatedAt > ps[last].updatedAt)) last = i;
+  });
+  if (last < 0) return BUILT[0];
+  const allDone = CHAPTERS[BUILT[last]].units.every((u) => u.lessons.every((l) => ps[last].lessons[l.id]));
+  return allDone && last + 1 < BUILT.length ? BUILT[last + 1] : BUILT[last];
+}
+
 function HeroGo() {
-  const id = "ch03";
+  const id = useHeroChapter();
   const ch = CHAPTERS[id];
   const p = useProgress(storeFor(id), (x) => x);
   const m = mastery(ch, p);

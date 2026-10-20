@@ -4,7 +4,9 @@ An interactive, step-by-step study course for Larry Harris, *Trading and Exchang
 Practitioners* (Oxford University Press, 2003). One chapter at a time: short lessons, one idea per screen, animated
 illustrations, practice questions with instant feedback, checkpoints, flashcards and a timed mock exam.
 
-Built so far: **Chapter 3, The Trading Industry** (53 lessons, 235 questions, 59 animated scenes, 7 games).
+Built so far:
+- **Chapter 3, The Trading Industry** (53 lessons, 235 questions, 59 animated scenes, 7 games).
+- **Chapter 4, Orders and Order Properties** (38 lessons, 261 questions, 54 animated scenes, 12 games).
 
 ## Run it
 

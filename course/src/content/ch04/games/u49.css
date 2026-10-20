@@ -1,0 +1,187 @@
+/* OrderClock (4.9) */
+.oc {
+  display: grid;
+  gap: 12px;
+}
+.oc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.oc-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--good-soft);
+  color: var(--good-ink);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.oc-round {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.oc-ask {
+  margin: 0;
+  padding: 14px 16px;
+  min-height: 78px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--line);
+  font-size: 16px;
+  line-height: 1.45;
+}
+.oc-ask strong {
+  color: var(--game-ink);
+}
+.oc-strip {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  background: var(--scene-bg);
+}
+.oc-day {
+  fill: var(--node);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.oc-day-label {
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 750;
+  fill: var(--ink-3);
+}
+.oc-tiny {
+  font-family: var(--font);
+  font-size: 9.5px;
+  font-weight: 700;
+  fill: var(--ink-3);
+}
+.oc-now {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+.oc-now-label {
+  fill: var(--ink-2);
+}
+.oc-month {
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+.oc-row-label {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 800;
+}
+.oc-btns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.oc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 6px 6px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface-2);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.15;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+}
+.oc-btn:hover:not(:disabled) {
+  border-color: var(--line-strong);
+}
+.oc-btn:disabled {
+  cursor: default;
+}
+.oc-btn.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.oc-btn.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.oc-btn.off {
+  opacity: 0.45;
+}
+.oc-fb {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--good);
+  background: var(--good-soft);
+}
+.oc-fb.ko {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+.oc-fb-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.oc-fb.ok .oc-fb-head {
+  color: var(--good-ink);
+}
+.oc-fb.ko .oc-fb-head {
+  color: var(--bad-ink);
+}
+.oc-fb-head strong {
+  color: var(--ink);
+}
+.oc-fb-row {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.oc-fb-row strong {
+  color: var(--ink);
+}
+.oc-next {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  margin-top: 6px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font-weight: 800;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--cta) 55%, #000);
+  cursor: pointer;
+}
+@media (max-width: 520px) {
+  .oc-btn {
+    font-size: 13px;
+    gap: 4px;
+  }
+  .oc-ask {
+    font-size: 15px;
+  }
+}

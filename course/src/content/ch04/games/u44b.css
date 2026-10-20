@@ -1,0 +1,189 @@
+/* BeatTheBell (4.4.4) */
+.btb {
+  display: grid;
+  gap: 10px;
+}
+.btb-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.btb-round {
+  font-weight: 750;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.btb-bell {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--line);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.btb-bell.hot {
+  border-color: var(--game);
+  color: var(--game-ink);
+  background: var(--game-soft);
+}
+.btb-got {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.btb-got strong {
+  color: var(--ink);
+}
+.btb-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.btb-quote {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.btb-quote span {
+  display: grid;
+  gap: 1px;
+  padding: 7px 10px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--line);
+  font-size: 17px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.btb-quote small {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.03em;
+  color: var(--ink-3);
+}
+.btb-quote .q-bid {
+  color: var(--bid-ink);
+}
+.btb-quote .q-ask {
+  color: var(--ask-ink);
+}
+.btb-quote .q-my {
+  color: var(--game-ink);
+  border-color: var(--game);
+  background: var(--game-soft);
+}
+.btb-ready,
+.btb-res {
+  display: grid;
+  gap: 8px;
+}
+.btb-ready p,
+.btb-res p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.btb-ready strong {
+  color: var(--ink);
+}
+.btb-ctrl {
+  display: grid;
+  gap: 8px;
+}
+.btb-nudge {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.btb-nudge button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btb-nudge button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.btb-take,
+.btb-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 50px;
+  border: 0;
+  border-radius: var(--r);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btb-take {
+  background: var(--ask);
+  color: #fff;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ask) 60%, #000);
+}
+.btb-go {
+  background: var(--game);
+  color: #fff;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--game) 60%, #000);
+  margin-bottom: 4px;
+}
+.btb-take .kbd,
+.btb-go .kbd {
+  opacity: 0.8;
+}
+.btb-res {
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+.btb-res.ok {
+  background: var(--good-soft);
+}
+.btb-res.ko {
+  background: var(--bad-soft);
+}
+.btb-res-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+.btb-res.ok .btb-res-head {
+  color: var(--good-ink);
+}
+.btb-res.ko .btb-res-head {
+  color: var(--bad-ink);
+}
+.btb-pts {
+  font-size: 14px;
+  font-weight: 800;
+}
+.btb-vs strong,
+.btb-res p strong {
+  color: var(--ink);
+}
+.btb-mood {
+  font-size: 13.5px !important;
+}

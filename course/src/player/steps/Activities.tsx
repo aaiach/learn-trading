@@ -142,7 +142,10 @@ export function ClassifyView({ step, onDone, refText }: { step: ClassifyStep; on
           <BookQuote cite={step.cite} size="sm" />
         ) : (
           <p className="hint">
-            Tap a box, or press <Kbd>1</Kbd>–<Kbd>{n}</Kbd>
+            Tap a box
+            <span className="kbd-hint">
+              , or press <Kbd>1</Kbd>–<Kbd>{n}</Kbd>
+            </span>
           </p>
         )}
       </Swap>

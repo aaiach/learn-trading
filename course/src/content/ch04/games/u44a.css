@@ -1,0 +1,290 @@
+/* PlaceIt (4.4.1): an order book you can read and tap */
+.pi {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+.pi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+}
+.pi-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.pi-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-right: 8px;
+  color: var(--fire);
+}
+.pi-prompt {
+  margin: 0;
+  min-height: 46px;
+  font-size: 16.5px;
+  font-weight: 650;
+  line-height: 1.38;
+}
+.pi-prompt strong.buy {
+  color: var(--bid-ink);
+}
+.pi-prompt strong.sell {
+  color: var(--ask-ink);
+}
+.pi-clock {
+  height: 6px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.pi-clock > div {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--game);
+  transition: width 0.1s linear, background 0.3s;
+}
+.pi-clock > div.low {
+  background: var(--fire);
+}
+
+.pi-book {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pi-head,
+.pi-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
+  align-items: center;
+}
+.pi-head {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ink-3);
+  background: var(--surface-2);
+}
+.pi-head .b {
+  text-align: right;
+  color: var(--bid-ink);
+}
+.pi-head .a {
+  text-align: left;
+  color: var(--ask-ink);
+}
+.pi-row {
+  position: relative;
+  width: 100%;
+  height: 42px;
+  padding: 0 10px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+button.pi-row {
+  cursor: pointer;
+}
+button.pi-row:hover,
+.pi-row.cursor {
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.pi-row.inside {
+  background-image: repeating-linear-gradient(135deg, transparent 0 7px, color-mix(in srgb, var(--line) 70%, transparent) 7px 8px);
+}
+.pi-row.order {
+  background-color: color-mix(in srgb, var(--game) 9%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--game) 55%, transparent);
+}
+.pi-row.ok {
+  background-color: var(--good-soft);
+  box-shadow: inset 0 0 0 2px var(--good);
+}
+.pi-row.ko {
+  background-color: var(--bad-soft);
+  box-shadow: inset 0 0 0 2px var(--bad);
+}
+.pi-row.target {
+  box-shadow: inset 0 0 0 2px var(--good);
+  background-color: color-mix(in srgb, var(--good-soft) 60%, transparent);
+}
+.pi-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.pi-bid {
+  justify-content: flex-end;
+}
+.pi-ask {
+  justify-content: flex-start;
+}
+.pi-bar {
+  display: block;
+  height: 18px;
+  border-radius: 5px;
+}
+.pi-bid .pi-bar {
+  background: var(--bid);
+}
+.pi-ask .pi-bar {
+  background: var(--ask);
+}
+.pi-price {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.pi-price.bb {
+  font-weight: 850;
+  color: var(--bid-ink);
+}
+.pi-price.bo {
+  font-weight: 850;
+  color: var(--ask-ink);
+}
+.pi-chip {
+  position: absolute;
+  top: calc(50% - 12px);
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 99px;
+  border: 2px solid;
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  z-index: 2;
+}
+.pi-bid .pi-chip {
+  left: 0;
+}
+.pi-ask .pi-chip {
+  right: 0;
+}
+.pi-chip.buy {
+  border-color: var(--bid);
+  color: var(--bid-ink);
+}
+.pi-chip.sell {
+  border-color: var(--ask);
+  color: var(--ask-ink);
+}
+.pi-quote {
+  margin: 0;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.pi-hint {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+.pi-terms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.pi-term {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 50px;
+  padding: 0 8px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+.pi-term:hover {
+  border-color: var(--line-strong);
+}
+.pi-term:active {
+  transform: translateY(2px);
+}
+.pi-fb {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.42;
+}
+.pi-fb.ok {
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.pi-fb.ko {
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.pi-fb p {
+  margin: 0;
+}
+.pi-fb-icon {
+  display: inline-flex;
+  vertical-align: -2px;
+  margin-right: 5px;
+}
+.pi-note {
+  color: var(--ink-2);
+  font-weight: 650;
+}
+.pi-next {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--cta) 55%, #000);
+}
+@media (max-width: 520px) {
+  .pi-prompt {
+    font-size: 15.5px;
+  }
+  .pi-term {
+    font-size: 13.5px;
+  }
+}

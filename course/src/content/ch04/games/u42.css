@@ -1,0 +1,199 @@
+/* MakerTaker (4.2) */
+.mkt {
+  display: grid;
+  gap: 12px;
+}
+.mkt-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mkt-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.mkt-time {
+  flex: 1;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.mkt-time-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--game);
+}
+.mkt-count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.mkt-book {
+  display: grid;
+  grid-template-columns: 1fr 52px 1fr;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--scene-bg);
+  border: 1px solid var(--line);
+}
+.mkt-col {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.mkt-h {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.mkt-col.bid .mkt-h {
+  color: var(--bid);
+  text-align: right;
+}
+.mkt-col.ask .mkt-h {
+  color: var(--ask);
+}
+.mkt-stack {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  min-height: 112px;
+}
+.mkt-col.bid .mkt-stack {
+  justify-items: end;
+}
+.mkt-col.ask .mkt-stack {
+  justify-items: start;
+}
+.mkt-blk {
+  display: block;
+  height: 9px;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+.mkt-blk.bid {
+  background: var(--bid);
+  transform-origin: right center;
+}
+.mkt-blk.ask {
+  background: var(--ask);
+  transform-origin: left center;
+}
+.mkt-blk.new {
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--see);
+}
+.mkt-mid {
+  display: grid;
+  place-items: center;
+}
+.mkt-trade {
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: var(--see-soft);
+  color: var(--see-ink);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+.mkt-stage {
+  display: grid;
+  place-items: center;
+  min-height: 132px;
+}
+.mkt-card {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--ink);
+}
+.mkt-card small {
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--good-ink);
+}
+.mkt-card.ok {
+  border-color: var(--good);
+  background: var(--good-soft);
+}
+.mkt-card.ko {
+  border-color: var(--bad);
+}
+.mkt-who {
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.mkt-who.buyer {
+  background: var(--bid-soft);
+  color: var(--bid-ink);
+}
+.mkt-who.seller {
+  background: var(--ask-soft);
+  color: var(--ask-ink);
+}
+.mkt-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.mkt-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.mkt-btn:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.mkt-btn.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+  box-shadow: 0 3px 0 var(--good);
+}
+.mkt-btn.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+  box-shadow: 0 3px 0 var(--bad);
+}
+@media (max-width: 420px) {
+  .mkt-btn {
+    font-size: 14px;
+    gap: 5px;
+  }
+  .mkt-btn svg {
+    display: none;
+  }
+}

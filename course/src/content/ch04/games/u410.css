@@ -1,0 +1,241 @@
+/* FillDesk (4.10) */
+.fd {
+  display: grid;
+  gap: 12px;
+}
+.fd-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fd-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--good-soft);
+  color: var(--good-ink);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.fd-prog {
+  flex: 1;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--line);
+  overflow: hidden;
+}
+.fd-prog-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--game);
+}
+.fd-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.fd-ticket {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1.5px dashed var(--line-strong);
+  background: var(--surface-2);
+}
+.fd-ticket-main {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+.fd-side {
+  align-self: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+.fd-side.buy {
+  background: var(--bid);
+}
+.fd-side.sell {
+  background: var(--ask);
+}
+.fd-limit {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.fd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.fd-tag {
+  padding: 2px 9px;
+  border-radius: 99px;
+  border: 1.5px solid var(--line-strong);
+  background: var(--surface);
+  font-size: 12.5px;
+  font-weight: 750;
+}
+.fd-fill {
+  display: grid;
+  gap: 4px;
+}
+.fd-bar {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--line);
+  overflow: hidden;
+}
+.fd-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--bid);
+}
+.fd-filled {
+  font-size: 13px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+.fd-filled em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--ink);
+}
+.fd-offer {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 14px 12px;
+  border-radius: 16px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.fd-offer.ok {
+  border-color: var(--good);
+}
+.fd-offer.ko {
+  border-color: var(--bad);
+}
+.fd-time {
+  font-size: 12.5px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.fd-what {
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.fd-what.ask {
+  color: var(--ask-ink);
+}
+.fd-what.bid {
+  color: var(--bid-ink);
+}
+.fd-q {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.fd-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.fd-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface-2);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+}
+.fd-btn:hover:not(:disabled) {
+  border-color: var(--line-strong);
+}
+.fd-btn:disabled {
+  cursor: default;
+}
+.fd-btn.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.fd-btn.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.fd-btn.off {
+  opacity: 0.45;
+}
+.fd-fb {
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--good);
+  background: var(--good-soft);
+}
+.fd-fb.ko {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+.fd-fb p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.4;
+}
+.fd-fb p svg {
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+.fd-fb.ok p svg {
+  color: var(--good-ink);
+}
+.fd-fb.ko p svg {
+  color: var(--bad-ink);
+}
+.fd-next {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font-weight: 800;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--cta) 55%, #000);
+  cursor: pointer;
+}
+@media (max-width: 520px) {
+  .fd-what {
+    font-size: 19px;
+  }
+  .fd-ticket-main {
+    font-size: 16px;
+  }
+}

@@ -21,6 +21,8 @@ export type SceneTone =
   | "bad"
   | "cash"
   | "asset"
+  | "bid"
+  | "ask"
   | "neutral";
 
 const toneVar = (t: SceneTone = "neutral") =>

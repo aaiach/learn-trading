@@ -1,0 +1,216 @@
+/* Tick tape (4.7). Upticks blue, downticks pink: green and red only mean right/wrong. */
+.tt {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 4px;
+}
+.tt-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tt-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--good-soft);
+  color: var(--good-ink);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.tt-time {
+  flex: 1;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--line);
+  overflow: hidden;
+}
+.tt-time-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--game);
+}
+.tt-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--fire);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.tt-count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.tt-tape {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 6px;
+  min-height: 104px;
+  padding: 22px 10px 10px;
+  border-radius: 16px;
+  background: var(--scene-bg);
+  overflow: hidden;
+}
+.tt-chip {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  flex: 0 1 64px;
+  min-width: 0;
+  padding: 8px 4px 6px;
+  border-radius: 12px;
+  border: 1.5px solid var(--node-line);
+  background: var(--node);
+}
+.tt-chip.now {
+  flex-basis: 78px;
+  border-width: 2.5px;
+  border-color: var(--ink);
+  box-shadow: var(--shadow);
+}
+.tt-chip.ref {
+  border-color: var(--ink-2);
+  border-style: dashed;
+  border-width: 2px;
+}
+.tt-price {
+  font-size: 14px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+.tt-chip.now .tt-price {
+  font-size: 16.5px;
+  font-weight: 800;
+}
+.tt-tag {
+  display: grid;
+  place-items: center;
+  min-height: 22px;
+  font-weight: 800;
+  color: var(--ink-3);
+}
+.tt-ref {
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+.tt-chip.tt-up,
+.tt-chip.tt-zup {
+  border-color: var(--def);
+}
+.tt-chip.tt-down,
+.tt-chip.tt-zdown {
+  border-color: var(--game);
+}
+.tt-chip.now.tt-up,
+.tt-chip.now.tt-down {
+  border-width: 2.5px;
+}
+.tt-glyph {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.tt-glyph b {
+  font-weight: 900;
+  margin-right: 1px;
+}
+.tt-up,
+.tt-zup {
+  color: var(--def-ink);
+}
+.tt-down,
+.tt-zdown {
+  color: var(--game-ink);
+}
+.tt-chip.tt-up .tt-price,
+.tt-chip.tt-down .tt-price,
+.tt-chip.tt-zup .tt-price,
+.tt-chip.tt-zdown .tt-price {
+  color: var(--ink);
+}
+.tt-fb-wrap {
+  min-height: 44px;
+}
+.tt-fb {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.4;
+}
+.tt-fb svg {
+  flex: none;
+  margin-top: 2px;
+}
+.tt-fb.ok {
+  color: var(--good-ink);
+}
+.tt-fb.ko {
+  color: var(--bad-ink);
+}
+.tt-fb.muted {
+  color: var(--ink-3);
+  font-weight: 650;
+}
+.tt-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.tt-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 52px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface-2);
+  box-shadow: 0 3px 0 var(--line);
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.tt-btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.tt-btn.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.tt-btn.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.tt-btn.right .tt-glyph,
+.tt-btn.wrong .tt-glyph {
+  color: inherit;
+}
+@media (max-width: 400px) {
+  .tt-btn {
+    font-size: 13.5px;
+    gap: 5px;
+    padding: 6px;
+  }
+}

@@ -10,9 +10,13 @@ import { isQuestion } from "../src/content/types.ts";
 import { qid } from "../src/content/ids.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "source", "chapters");
-const SOURCES: Record<string, { layout: string; raw: string; first: number }> = {
+// `tables`: optional hand transcriptions (tagged <<p.N>>) of rotated tables that pdftotext garbles.
+const SOURCES: Record<string, { layout: string; raw: string; first: number; tables?: string }> = {
   ch03: { layout: "03-the-trading-industry.txt", raw: "03-raw.txt", first: 32 },
+  ch04: { layout: "04-orders-and-order-properties.txt", raw: "04-raw.txt", first: 68, tables: "04-tables.txt" },
 };
+// ONLY=4.3 npm test → check only units whose section starts with 4.3 (handy while one unit is being written).
+const ONLY = process.env.ONLY;
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 const words = (s: string) => s.toLowerCase().match(/[a-z0-9]+/g) ?? [];
@@ -47,18 +51,22 @@ function collectCites(node: unknown, path: string, out: { cite: Cite; path: stri
   for (const [k, v] of Object.entries(o)) if (typeof v !== "function") collectCites(v, `${path}.${k}`, out, seen);
 }
 
-for (const [id, ch] of Object.entries(CHAPTERS)) {
+for (const [id, full] of Object.entries(CHAPTERS)) {
+  const ch = ONLY ? { ...full, units: full.units.filter((u) => u.sec === ONLY || u.sec.startsWith(`${ONLY}.`)) } : full;
+  if (ONLY && !ch.units.length) continue;
   const src = SOURCES[id];
   // The book text lives in ../source, which is never published; without it the quote check is skipped.
   const haveSource = existsSync(join(ROOT, src.layout)) && existsSync(join(ROOT, src.raw));
   const layout = haveSource ? pagesFromLayout(readFileSync(join(ROOT, src.layout), "utf8")) : new Map<number, string>();
   const raw = haveSource ? pagesFromRaw(readFileSync(join(ROOT, src.raw), "utf8"), src.first) : new Map<number, string>();
+  if (haveSource && src.tables && existsSync(join(ROOT, src.tables)))
+    for (const [p, t] of pagesFromLayout(readFileSync(join(ROOT, src.tables), "utf8"))) layout.set(p, `${layout.get(p) ?? ""}\n${t}`);
 
   describe.skipIf(!haveSource)(`${id} quotes`, () => {
     const cites: { cite: Cite; path: string }[] = [];
     collectCites(ch, id, cites);
 
-    it("has quotes", () => expect(cites.length).toBeGreaterThan(20));
+    it("has quotes", () => expect(cites.length).toBeGreaterThan(ONLY ? 0 : 20));
 
     it("every quote is verbatim on its cited page", () => {
       const bad: string[] = [];

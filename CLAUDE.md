@@ -98,6 +98,18 @@ every experienced trader knows. (The learner's personal context is kept out of t
   53 lessons (24 must know, 20 should know, 9 nice to know) / 583 screens: 235 questions, 112 definitions, 59 scenes (244 beats), 34 sort/match, 7 games, 7 today
   notes. Units: u31 (6 lessons), u32 (10), u33a + u33b (9 + 7, one unit 3.3), u34 (10), u35 (11, incl. 3.7 recap).
   Games: TradingPit (long/short), ClearingDesk, ClassRush, Waterfall (CMO), OdaxGame, WealthGuess, JurisdictionRush.
+- Ch. 4 Orders and Order Properties — `course/src/content/ch04/` (http://localhost:5317/ch04), built 2026-10-20.
+  38 lessons (25 must know, 12 should know, 1 nice to know) / 469 screens: 261 questions (78 in checkpoints),
+  63 definitions, 54 scenes (240 beats), 25 sort/match, 12 games, 12 today notes. Units 4.1–4.11, one file each
+  (`u44a` + `u44b` form unit 4.4); the 4.12 summary and 4.13 points close unit 4.11, as Ch. 3 did.
+  Games: OrderTicket, MakerTaker, WalkTheBook, PlaceIt, BeatTheBell, TriggerLab, TickTape, WorkTheOrder, OrderClock,
+  FillDesk, IcebergHunter, OrderDesk.
+  Shared order-book drawing kit: `ch04/illus/kit.tsx` (`Ladder`, `PriceChart`); bid/ask colours `--bid`/`--ask` in
+  `tokens.css`. Table 4-4 is rotated: its hand transcription is `source/chapters/04-tables.txt` (`tables` in SOURCES).
+  Book inconsistency handled in the lesson: §4.9 treats fill-or-kill as immediate-or-cancel; today FOK is all-or-nothing.
 - Building a unit in parallel with forks worked: give each fork its own `uNN.ts` / `illus/uNN.tsx` / games files,
   keep shared engine edits in the main session, and ask for short excerpts written in small steps (one fork's
   large output with many book quotes was stopped by the API's content filter).
+- With many forks saving files at once, the shared dev server shows Vite error overlays and live reloads. Test on a
+  frozen build (`vite build` + `vite preview` on another port) or stub Vite's live-reload client in Playwright.
+  `ONLY=4.3 npm test` checks one unit's excerpts while it is being written.

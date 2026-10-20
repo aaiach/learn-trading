@@ -1,0 +1,210 @@
+/* OrderTicket (4.1) */
+.otk {
+  display: grid;
+  gap: 12px;
+}
+.otk-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.otk-round {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--game-ink);
+}
+.otk-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.otk-body {
+  display: grid;
+  gap: 12px;
+}
+.otk-intent {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.otk-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+.otk-who small {
+  font-weight: 650;
+  color: var(--ink-3);
+}
+.otk-intent blockquote {
+  margin: 4px 0 0;
+  font-size: 14.5px;
+  line-height: 1.42;
+  color: var(--ink);
+}
+.otk-ticket {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1.5px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 2px 0 var(--line);
+}
+.otk-ticket-head {
+  padding: 7px 14px;
+  background: var(--prac-soft);
+  color: var(--prac-ink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+.otk-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-top: 1px solid var(--line);
+  transition: background 0.2s;
+}
+.otk-row.current {
+  background: var(--game-soft);
+  box-shadow: inset 4px 0 0 var(--game);
+}
+.otk-k {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.otk-v {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.otk-row.given .otk-v {
+  color: var(--ink-2);
+}
+.otk-blank {
+  font-weight: 650;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.otk-row.current .otk-blank {
+  color: var(--game-ink);
+}
+.otk-stamp {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  padding: 0 9px;
+  border: 2px solid var(--see);
+  border-radius: 7px;
+  color: var(--see-ink);
+  background: var(--surface);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 20px;
+  letter-spacing: 0.12em;
+  pointer-events: none;
+}
+.otk-pick {
+  min-height: 112px;
+}
+.otk-chips {
+  display: grid;
+  gap: 8px;
+}
+.otk-ask {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+.otk-chip-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  gap: 8px;
+}
+.otk-chip-row.n2 {
+  grid-template-columns: 1fr 1fr;
+}
+.otk-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.otk-chip:hover {
+  border-color: var(--game);
+}
+.otk-chip.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+  box-shadow: 0 3px 0 var(--good);
+}
+.otk-chip.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+  box-shadow: 0 3px 0 var(--bad);
+}
+.otk-why {
+  margin: 2px 0 0;
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--good-ink);
+}
+.otk-done {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  padding-bottom: 4px;
+}
+.otk-line {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 750;
+  text-align: center;
+  color: var(--ink);
+}
+.otk-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--cta) 55%, #000);
+  cursor: pointer;
+}

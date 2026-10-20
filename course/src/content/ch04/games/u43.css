@@ -1,0 +1,183 @@
+/* WalkTheBook (4.3.3) */
+.wtb {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+.wtb-goal {
+  display: grid;
+  gap: 3px;
+}
+.wtb-goal p {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.wtb-goal p strong {
+  font-weight: 850;
+}
+.wtb-round {
+  font-size: 12px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.wtb-book {
+  user-select: none;
+}
+.wtb-row {
+  cursor: pointer;
+}
+.wtb-row:hover {
+  fill: color-mix(in srgb, var(--prac) 10%, transparent);
+}
+.wtb-read {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.wtb-read strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.wtb-ctl {
+  display: grid;
+  gap: 10px;
+}
+.wtb-size {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+.wtb-size button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 64px;
+  height: 44px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.wtb-size input[type="range"] {
+  width: 100%;
+  min-width: 0;
+  accent-color: var(--game);
+  height: 28px;
+}
+.wtb-fixed {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.wtb-fixed strong {
+  color: var(--ink);
+}
+.wtb-hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.wtb-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  border: 0;
+  border-radius: var(--r);
+  background: var(--game);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--game) 60%, #000);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.wtb-go:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.wtb-ask {
+  display: grid;
+  gap: 8px;
+}
+.wtb-ask p {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 750;
+}
+.wtb-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.wtb-opts button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 14.5px;
+  font-weight: 750;
+  text-align: left;
+  cursor: pointer;
+}
+.wtb-opts button:hover {
+  border-color: var(--line-strong);
+}
+.wtb-fb {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.wtb-fb span svg {
+  vertical-align: -2px;
+}
+.wtb-fb.ok {
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.wtb-fb.ko {
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.wtb-fb button {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font-weight: 800;
+  cursor: pointer;
+}
+@media (max-width: 420px) {
+  .wtb-opts-long {
+    grid-template-columns: 1fr;
+  }
+  .wtb-read {
+    font-size: 13px;
+  }
+}
