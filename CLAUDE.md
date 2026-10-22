@@ -88,6 +88,13 @@ every experienced trader knows. (The learner's personal context is kept out of t
   - `src/content/chNN/`: `index.ts` (units), `uNN.ts` (lessons, one file per unit), `illus/uNN.tsx` (scenes),
     `games/*.tsx` (+ unit CSS). Register a chapter in `src/course.ts` and `tests/content.test.ts` (`SOURCES`).
   - `src/state/progress.ts`: localStorage + mirror to `course/progress/chNN.json` via `server/api.ts`.
+  - `src/state/transfer.ts` + `src/screens/Sync.tsx` (`/sync`, phone icon on the home page; asked for 2026-10-22):
+    move progress between devices with no server. "Copy my progress" puts `te1:` + base64url(gzip(JSON)) on the
+    clipboard (Universal Clipboard carries it Mac → iPhone); `/sync/get` → "Paste", or a `.json` file either way. The
+    QR code only opens `/sync/get` on the phone (full progress is ~12 KB compressed for two chapters, far too big for
+    a QR). Bringing progress in **merges** (`merge()`: best lesson run, latest answer per question and card, larger XP,
+    union of days and exams), so neither device loses anything. `npm test` covers the round trip and the merge. When
+    `Progress` gains a field, add it to `merge()`.
 - QA scripts used during the build live in the session scratchpad; recreate as needed (Playwright, Python 3.11 at
   `/Library/Frameworks/Python.framework/Versions/3.11/bin/python3`).
 

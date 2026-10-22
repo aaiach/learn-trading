@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, BookOpen, Lock } from "lucide-react";
+import { ArrowRight, BookOpen, Lock, Smartphone } from "lucide-react";
 import { TOC, chapterId } from "../content/toc.ts";
 import { CHAPTERS, mastery } from "../course.ts";
 import { Link } from "../router.tsx";
@@ -124,7 +124,12 @@ export function Home() {
             <h1>Trading &amp; Exchanges</h1>
             <p>Larry Harris · Market Microstructure for Practitioners</p>
           </div>
-          <ThemeToggle />
+          <div className="home-tools">
+            <Link to="/sync" className="icon-btn" aria-label="Continue on another device" title="Continue on another device">
+              <Smartphone size={18} />
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
       <main className="col home-main">

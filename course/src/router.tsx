@@ -23,7 +23,7 @@ export function navigate(to: string, replace = false) {
   window.dispatchEvent(new Event(EVT));
 }
 
-export function Link({ to, children, className, ...rest }: { to: string; children: ReactNode; className?: string; "aria-label"?: string }) {
+export function Link({ to, children, className, ...rest }: { to: string; children: ReactNode; className?: string; title?: string; "aria-label"?: string }) {
   const on = (e: MouseEvent<HTMLAnchorElement>) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     e.preventDefault();

@@ -5,6 +5,10 @@ import { useSyncExternalStore } from "react";
 export type LessonRecord = { stars: number; best: number; runs: number; at: number };
 export type QRecord = { right: number; wrong: number; last: number; lastOk: boolean };
 export type CardRecord = { box: number; due: number };
+
+/** Leitner boxes: days until the card is due again, by box. */
+export const BOX_DAYS = [0, 1, 3, 7, 16];
+export const DAY = 86_400_000;
 export type ExamRecord = { at: number; score: number; max: number; passed: boolean };
 
 export type Progress = {
@@ -24,7 +28,7 @@ export type Progress = {
   unlockAll: boolean;
 };
 
-const empty = (): Progress => ({
+export const empty = (): Progress => ({
   v: 2,
   updatedAt: 0,
   xp: 0,
@@ -141,6 +145,14 @@ export class ProgressStore {
     fn(next);
     next.updatedAt = Date.now();
     this.state = next;
+    this.persistLocal();
+    this.schedule();
+    this.emit();
+  }
+
+  /** Take progress brought from another device as is (see state/transfer.ts), keeping its `updatedAt`. */
+  replace(p: Progress) {
+    this.state = { ...empty(), ...p };
     this.persistLocal();
     this.schedule();
     this.emit();

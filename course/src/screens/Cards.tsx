@@ -4,14 +4,10 @@ import { RotateCw, X } from "lucide-react";
 import type { Chapter } from "../content/types.ts";
 import { type CardRef, cardsOf } from "../content/ids.ts";
 import { navigate } from "../router.tsx";
-import type { ProgressStore } from "../state/progress.ts";
+import { BOX_DAYS, DAY, type ProgressStore } from "../state/progress.ts";
 import { BookQuote, Button, Chip, Kbd, Rich } from "../ds/ui.tsx";
 import { EASE_OUT, spring } from "../motion/tokens.ts";
 import { shuffle } from "../util.ts";
-
-/** Leitner boxes: days until the card is due again, by box. */
-const BOX_DAYS = [0, 1, 3, 7, 16];
-const DAY = 86_400_000;
 
 export function Cards({ ch, store }: { ch: Chapter; store: ProgressStore }) {
   const deck = useMemo(() => {

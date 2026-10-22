@@ -17,7 +17,8 @@ npm run dev     # http://localhost:5317
 ```
 
 `npm run build` produces a static site in `course/dist`. Progress is kept in the browser (and, in local dev only,
-mirrored to `course/progress/`).
+mirrored to `course/progress/`). To continue on another device, tap the phone icon on the home page: copy your progress
+on one device and paste it on the other (or use a file). Bringing it in merges with what that device already has.
 
 ## How it is organised
 

@@ -10,6 +10,7 @@ import { PracticeHub } from "./screens/PracticeHub.tsx";
 import { ExamHub, ExamRun } from "./screens/Exam.tsx";
 import { Cards } from "./screens/Cards.tsx";
 import { CheckpointRun, LessonRun, ReviewRun } from "./screens/Runs.tsx";
+import { Sync } from "./screens/Sync.tsx";
 
 function Route({ path }: { path: string }) {
   const [, chId, section, arg] = path.split("/").map(decodeURIComponent);
@@ -17,6 +18,7 @@ function Route({ path }: { path: string }) {
   useEffect(() => {
     document.title = ch ? `Ch. ${ch.num} ${ch.title} · Trading & Exchanges` : "Trading & Exchanges";
   }, [ch]);
+  if (chId === "sync") return <Sync key={section ?? ""} start={section === "send" || section === "get" ? section : "pick"} />;
   if (!ch) return <Home />;
   const store = storeFor(ch.id);
   switch (section) {

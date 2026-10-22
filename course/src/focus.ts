@@ -14,6 +14,8 @@ function read(): boolean {
   }
 }
 
+export const getFocus = () => on;
+
 export function setFocus(v: boolean) {
   on = v;
   try {
