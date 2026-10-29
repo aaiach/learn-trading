@@ -3,8 +3,9 @@ import { isQuestion } from "./content/types.ts";
 import type { Progress } from "./state/progress.ts";
 import { CH03 } from "./content/ch03/index.ts";
 import { CH04 } from "./content/ch04/index.ts";
+import { CH05 } from "./content/ch05/index.ts";
 
-export const CHAPTERS: Record<string, Chapter> = { ch03: CH03, ch04: CH04 };
+export const CHAPTERS: Record<string, Chapter> = { ch03: CH03, ch04: CH04, ch05: CH05 };
 
 export type NodeStatus = "done" | "current" | "open" | "locked";
 

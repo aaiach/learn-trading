@@ -25,6 +25,9 @@ export type QProps<T extends Question> = {
 const LETTERS = "ABCDEFGH";
 const NUDGE = { x: [0, -7, 7, -4, 0], transition: { duration: 0.34 } };
 
+// Punctuation right after a blank ("___,") stays on the blank's line.
+const leadPunct = (s: string) => s.match(/^[,.;:!?)\u201d\u2019]+/)?.[0] ?? "";
+
 export function CheckMark({ size = 20 }: { size?: number }) {
   return (
     <svg viewBox="0 0 20 20" width={size} height={size} aria-hidden className="checkmark">
@@ -272,24 +275,27 @@ export function FillView({ q, answer, set, revealed, order, quiet, refText, uid 
         <p className="fill-text">
           {parts.map((p, i) => (
             <span key={i}>
-              <Rich text={p} />
+              <Rich text={i > 0 ? p.slice(leadPunct(p).length) : p} />
               {i < parts.length - 1 && (
-                <button
-                  type="button"
-                  className={`slot ${slots[i] ? "slot-full" : ""} ${
-                    revealed === null || quiet ? "" : slots[i] === q.answer[i] ? "right" : "wrong"
-                  }`}
-                  onClick={() => clear(i)}
-                  aria-label={slots[i] ? `Remove ${slots[i]}` : `Blank ${i + 1}`}
-                >
-                  {slots[i] ? (
-                    <motion.span layoutId={`${uid}-w-${slots[i]}`} className="word in-slot" transition={spring.soft}>
-                      {slots[i]}
-                    </motion.span>
-                  ) : (
-                    <span className="slot-gap" />
-                  )}
-                </button>
+                <span className="slot-glue">
+                  <button
+                    type="button"
+                    className={`slot ${slots[i] ? "slot-full" : ""} ${
+                      revealed === null || quiet ? "" : slots[i] === q.answer[i] ? "right" : "wrong"
+                    }`}
+                    onClick={() => clear(i)}
+                    aria-label={slots[i] ? `Remove ${slots[i]}` : `Blank ${i + 1}`}
+                  >
+                    {slots[i] ? (
+                      <motion.span layoutId={`${uid}-w-${slots[i]}`} className="word in-slot" transition={spring.soft}>
+                        {slots[i]}
+                      </motion.span>
+                    ) : (
+                      <span className="slot-gap" />
+                    )}
+                  </button>
+                  {leadPunct(parts[i + 1])}
+                </span>
               )}
             </span>
           ))}

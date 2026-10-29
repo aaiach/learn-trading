@@ -1,0 +1,372 @@
+/* TickGrid (5.1) */
+.tg {
+  display: grid;
+  gap: 12px;
+}
+.tg-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tg-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.tg-dots {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+}
+.tg-dot {
+  flex: 1;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.tg-dot.past {
+  background: var(--game);
+  border-color: var(--game);
+  opacity: 0.55;
+}
+.tg-dot.now {
+  background: var(--game);
+  border-color: var(--game);
+}
+.tg-count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.tg-round {
+  display: grid;
+  gap: 12px;
+}
+.tg-q {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.tg-q strong {
+  font-weight: 800;
+}
+.tg-q strong.bid {
+  color: var(--bid-ink);
+}
+.tg-q strong.ask {
+  color: var(--ask-ink);
+}
+
+/* grid rounds */
+.tg-grid-card {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 2px solid var(--line-strong);
+  background: var(--scene-bg);
+}
+.tg-tick {
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tg-tick strong {
+  color: var(--def-ink);
+}
+.tg-price {
+  font-size: 34px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.tg-line {
+  position: relative;
+  height: 40px;
+  margin: 0 22px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.tg-line.shown {
+  opacity: 1;
+}
+.tg-line-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 9px;
+  height: 2px;
+  background: var(--line-strong);
+}
+.tg-line-tick {
+  position: absolute;
+  top: 4px;
+  display: grid;
+  justify-items: center;
+  transform: translateX(-50%);
+}
+.tg-line-tick i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--def);
+  background: var(--surface);
+}
+.tg-line-tick small {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.tg-line-mark {
+  position: absolute;
+  top: -2px;
+  width: 4px;
+  height: 22px;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+.tg-line-mark.on {
+  background: var(--def);
+}
+.tg-line-mark.off {
+  background: var(--prac);
+}
+
+/* options */
+.tg-opts {
+  display: grid;
+  gap: 10px;
+}
+.tg-opts.two,
+.tg-opts.four {
+  grid-template-columns: 1fr 1fr;
+}
+.tg-opt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.tg-opt.big {
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+.tg-opt:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.tg-opt:disabled {
+  cursor: default;
+}
+.tg-opt.right,
+.tg-row.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+  box-shadow: 0 3px 0 var(--good);
+}
+.tg-opt.wrong,
+.tg-row.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+  box-shadow: 0 3px 0 var(--bad);
+}
+.tg-opt.faded,
+.tg-row.faded {
+  opacity: 0.5;
+}
+
+/* crowd rounds: a small book */
+.tg-book {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--scene-bg);
+}
+.tg-book-head {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 10px;
+  padding: 0 10px 2px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+.tg-book-head .bid {
+  color: var(--bid-ink);
+}
+.tg-book-head .ask {
+  color: var(--ask-ink);
+}
+.tg-inc {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tg-row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.tg-row:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.tg-row:disabled {
+  cursor: default;
+}
+.tg-row.round .tg-row-p {
+  font-weight: 850;
+}
+.tg-row-p {
+  font-size: 15px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.tg-row-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 16px;
+}
+.tg-bar {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+}
+.tg-bar.bid {
+  background: var(--bid);
+}
+.tg-bar.ask {
+  background: var(--ask);
+}
+.tg-row-bar em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--ink-3);
+}
+.tg-you {
+  padding: 1px 8px;
+  border-radius: 99px;
+  background: var(--game-soft);
+  color: var(--game-ink);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+/* feedback */
+.tg-fb {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 10px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--good);
+  background: var(--good-soft);
+}
+.tg-fb.ko {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+.tg-fb-icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--good);
+  color: #fff;
+}
+.tg-fb.ko .tg-fb-icon {
+  background: var(--bad);
+}
+.tg-fb p {
+  margin: 2px 0 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.tg-next {
+  grid-column: 1 / -1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.tg-end {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 22px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  text-align: center;
+}
+.tg-end strong {
+  font-size: 32px;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+.tg-end span {
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--ink-2);
+}
+@media (max-width: 420px) {
+  .tg-opts.two {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tg-opt {
+    font-size: 14px;
+  }
+  .tg-book-head .tg-inc {
+    display: none;
+  }
+}

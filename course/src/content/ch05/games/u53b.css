@@ -1,0 +1,202 @@
+/* ExecutionTable (5.3.5) */
+.xt {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 4px;
+}
+.xt-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.xt-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.xt-phase {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--game-ink);
+}
+.xt-count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.xt-table {
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 14px;
+  background: var(--scene-bg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.xt-row {
+  display: grid;
+  grid-template-columns: minmax(64px, 0.8fr) repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+.xt-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 4px 5px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+.xt-head .xt-cell {
+  padding-bottom: 2px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.xt-colhead.now {
+  color: var(--game-ink);
+}
+.xt-rowhead {
+  justify-content: flex-start;
+  text-align: left;
+  font-weight: 800;
+  color: var(--ink);
+}
+.xt-slot {
+  min-height: 44px;
+  border: 1.5px dashed var(--line-strong);
+  background: var(--surface);
+  transition: background 0.25s, border-color 0.25s;
+}
+.xt-slot.col {
+  border-color: var(--game);
+  background: var(--game-soft);
+}
+.xt-slot.ok {
+  border-style: solid;
+  border-color: var(--good);
+  background: var(--good-soft);
+}
+.xt-slot.ko {
+  border-style: solid;
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+.xt-val {
+  font-weight: 700;
+  color: var(--ink);
+}
+.xt-slot.ok .xt-val {
+  color: var(--good-ink);
+}
+.xt-stage {
+  display: grid;
+  place-items: center;
+  min-height: 118px;
+}
+.xt-card {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  text-align: center;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 750;
+}
+.xt-card.ok {
+  border-color: var(--good);
+  background: var(--good-soft);
+}
+.xt-card.ko {
+  border-color: var(--bad);
+}
+.xt-ask {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.xt-text {
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+.xt-card small {
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--good-ink);
+}
+.xt-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.xt-btns.n3 {
+  grid-template-columns: 1fr;
+}
+.xt-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 50px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+}
+.xt-btn:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.xt-btn.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+  box-shadow: 0 3px 0 var(--good);
+}
+.xt-btn.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+  box-shadow: 0 3px 0 var(--bad);
+}
+@media (max-width: 420px) {
+  .xt-cell {
+    font-size: 10px;
+    padding: 3px;
+  }
+  .xt-head .xt-cell {
+    font-size: 9px;
+  }
+  .xt-btn {
+    font-size: 13.5px;
+  }
+}

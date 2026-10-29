@@ -89,7 +89,9 @@ every experienced trader knows. (The learner's personal context is kept out of t
 
 ## Layout
 - `source/harris-trading-and-exchanges.pdf`, `source/text.txt` (pdftotext -layout), `source/chapters/NN-*.txt`
-  (tagged `<<p.N>>` per book page), `source/chapters/03-raw.txt` (non-layout text, also used to verify quotes).
+  (tagged `<<p.N>>` per book page), `source/chapters/NN-raw.txt` (non-layout text, also used to verify quotes;
+  sidebar boxes are usually contiguous only here; make it with `pdftotext -f <first+13> -l <last+13>`), and optional
+  `NN-tables.txt` (hand transcriptions of tables the text layer garbles, tagged `<<p.N>>`).
 - Page mapping: book page N = PDF page N+13. Rotated tables (e.g. Table 3-9) extract as garbage; render them with
   `pdftoppm -f P -l P` and read the image.
 - `course/` — Vite 7 + React 19 + TypeScript + Motion 12 + lucide-react. `npm run dev` → http://localhost:5317.
@@ -107,7 +109,11 @@ every experienced trader knows. (The learner's personal context is kept out of t
     union of days and exams), so neither device loses anything. `npm test` covers the round trip and the merge. When
     `Progress` gains a field, add it to `merge()`.
 - QA scripts used during the build live in the session scratchpad; recreate as needed (Playwright, Python 3.11 at
-  `/Library/Frameworks/Python.framework/Versions/3.11/bin/python3`).
+  `/Library/Frameworks/Python.framework/Versions/3.11/bin/python3`). A QA build (`VITE_QA=1 npx vite build --outDir
+  <dir>`, then `vite preview --outDir <dir> --port <p>`) adds a "]" key to the player that skips any step, so a script
+  can walk every screen; normal builds don't contain it. The Ch. 5 walker answered questions from a JSON dump of the
+  chapter (a vitest file that `JSON.stringify`s `CHAPTERS.chNN`), stepped every beat forward then back and compared
+  the scene, and flagged console errors, page overflow, scene text outside the stage and overlapping scene labels.
 
 ## Per-chapter workflow
 1. Read `course/progress/chNN.json` of earlier chapters: missed question ids, checkpoint scores. The learner studies on the
@@ -133,6 +139,15 @@ every experienced trader knows. (The learner's personal context is kept out of t
   Shared order-book drawing kit: `ch04/illus/kit.tsx` (`Ladder`, `PriceChart`); bid/ask colours `--bid`/`--ask` in
   `tokens.css`. Table 4-4 is rotated: its hand transcription is `source/chapters/04-tables.txt` (`tables` in SOURCES).
   Book inconsistency handled in the lesson: §4.9 treats fill-or-kill as immediate-or-cancel; today FOK is all-or-nothing.
+- Ch. 5 Market Structures — `course/src/content/ch05/` (http://localhost:5317/ch05), built 2026-10-29.
+  44 lessons (28 must know, 14 should know, 2 nice to know) / 554 screens: 275 questions (61 in checkpoints),
+  59 definitions, 69 scenes (271 beats), 34 sort/match, 9 games, 22 today notes. Units 5.1, 5.2, 5.3 (`u53a` + `u53b`),
+  5.4 (`u54a` + `u54b` + `u54c`); the 5.5 summary and 5.6 points close unit 5.4. Built by 7 parallel forks.
+  Games: TickGrid, MarketClock, BalanceTheBook, ExecutionTable (Table 5-1), MonthCodes, OptionCode, WhatCanYouSee
+  (Table 5-7), PitTalk, MarketProfile. `05-tables.txt` holds Table 5-8 (rotated) and the Nov/Dec cells of Tables
+  5-3 and 5-6 that the text layer drops. Book quirks: Table 5-5 prints 37.5 twice in row Z (unused); the text has
+  OCR slips ("Co the Vendor Display Rule", "(10I)", "NOB", "Ill"), never quoted; the quote check strips non-ASCII,
+  so "Deutsche Börse" is only paraphrased.
 - Building a unit in parallel with forks worked: give each fork its own `uNN.ts` / `illus/uNN.tsx` / games files,
   keep shared engine edits in the main session, and ask for short excerpts written in small steps (one fork's
   large output with many book quotes was stopped by the API's content filter).

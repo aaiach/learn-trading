@@ -453,6 +453,9 @@
   line-height: 2.4;
   font-weight: 600;
 }
+.slot-glue {
+  white-space: nowrap;
+}
 .slot {
   display: inline-flex;
   align-items: center;

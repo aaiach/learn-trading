@@ -1,0 +1,166 @@
+/* WhatCanYouSee (5.4.4) */
+.wcs {
+  display: grid;
+  gap: 10px;
+}
+.wcs-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.wcs-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.wcs-count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.wcs-mkt {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  text-align: center;
+  color: var(--ink);
+}
+.wcs-mkt strong {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.wcs-you {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--game-ink);
+}
+.wcs-sub {
+  font-size: 13.5px;
+  font-weight: 650;
+  color: var(--ink-3);
+}
+.wcs-row {
+  display: grid;
+  gap: 7px;
+}
+.wcs-row h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink-2);
+}
+.wcs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.wcs-chip {
+  padding: 7px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 2px 0 var(--line-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+}
+.wcs-chip:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.wcs-chip:disabled {
+  cursor: default;
+}
+.wcs-chip.picked {
+  border-color: var(--game);
+  background: var(--game-soft);
+  color: var(--game-ink);
+  box-shadow: 0 2px 0 var(--game);
+}
+.wcs-chip.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+  box-shadow: 0 2px 0 var(--good);
+}
+.wcs-chip.missed {
+  border-color: var(--good);
+  border-style: dashed;
+  color: var(--good-ink);
+}
+.wcs-chip.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+  box-shadow: 0 2px 0 var(--bad);
+}
+.wcs-why {
+  display: grid;
+  gap: 5px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.wcs-why p {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.wcs-why p svg {
+  flex: none;
+  margin-top: 2px;
+}
+.wcs-why p.ok svg {
+  color: var(--good);
+}
+.wcs-why p.ko svg {
+  color: var(--bad);
+}
+.wcs-why small {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--ink-3);
+}
+.wcs-go {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  border-radius: 14px;
+  border: 2px solid var(--game);
+  background: var(--game-soft);
+  color: var(--game-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.wcs-go:disabled {
+  opacity: 0.45;
+  cursor: default;
+}

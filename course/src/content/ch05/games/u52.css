@@ -1,0 +1,200 @@
+/* MarketClock (5.2.4) */
+.mclk {
+  display: grid;
+  gap: 12px;
+}
+.mclk-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mclk-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.mclk-dots {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+}
+.mclk-dot {
+  flex: 1;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.mclk-dot.past {
+  background: var(--game);
+  border-color: var(--game);
+}
+.mclk-dot.now {
+  border-color: var(--game);
+}
+.mclk-count {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.mclk-face {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--scene-bg);
+  border: 1px solid var(--line);
+}
+.mclk-svg {
+  flex: none;
+  width: 112px;
+  height: 112px;
+}
+.mclk-rim {
+  fill: var(--node);
+  stroke: var(--line-strong);
+  stroke-width: 2;
+}
+.mclk-tick {
+  stroke: var(--line-strong);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.mclk-tick.big {
+  stroke-width: 2.4;
+}
+.mclk-min {
+  stroke: var(--ink-2);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.mclk-hour {
+  stroke: var(--game);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.mclk-pin {
+  fill: var(--game);
+}
+.mclk-read {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.mclk-city {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.mclk-time {
+  font-size: 24px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.mclk-time small {
+  font-size: 14px;
+  font-weight: 750;
+  color: var(--ink-3);
+}
+.mclk-hours {
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--ink-3);
+}
+.mclk-prompt {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.mclk-opts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.mclk-opts.n4 {
+  grid-template-columns: 1fr 1fr;
+}
+.mclk-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  color: var(--ink);
+  font-size: 15.5px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+  cursor: pointer;
+}
+.mclk-opt:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.mclk-opt:disabled {
+  cursor: default;
+}
+.mclk-opt.right {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+  box-shadow: 0 3px 0 var(--good);
+}
+.mclk-opt.wrong {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+  box-shadow: 0 3px 0 var(--bad);
+}
+.mclk-opt.off {
+  opacity: 0.55;
+}
+.mclk-fb {
+  min-height: 44px;
+}
+.mclk-fb p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+.mclk-fb .ok {
+  color: var(--good-ink);
+}
+.mclk-fb .ko {
+  color: var(--bad-ink);
+}
+.mclk-end {
+  display: grid;
+  place-items: center;
+  min-height: 140px;
+  font-size: 20px;
+  font-weight: 800;
+}
+@media (max-width: 420px) {
+  .mclk-svg {
+    width: 96px;
+    height: 96px;
+  }
+  .mclk-time {
+    font-size: 21px;
+  }
+  .mclk-opt {
+    font-size: 14.5px;
+    gap: 7px;
+    padding: 8px 10px;
+  }
+}

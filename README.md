@@ -7,6 +7,7 @@ illustrations, practice questions with instant feedback, checkpoints, flashcards
 Built so far:
 - **Chapter 3, The Trading Industry** (53 lessons, 235 questions, 59 animated scenes, 7 games).
 - **Chapter 4, Orders and Order Properties** (38 lessons, 261 questions, 54 animated scenes, 12 games).
+- **Chapter 5, Market Structures** (44 lessons, 275 questions, 69 animated scenes, 9 games).
 
 ## Run it
 
@@ -26,7 +27,7 @@ on one device and paste it on the other (or use a file). Bringing it in merges w
 - `course/src/scene/` — the SVG toolkit behind the animated "See it" scenes
 - `course/src/ds/` — the design system: each kind of screen (definition, book excerpt, illustration, practice, game…)
   has one colour, icon and label
-- `course/src/content/ch03/` — Chapter 3, one file per book section
+- `course/src/content/chNN/` — one folder per chapter, one file per book section
 - `CLAUDE.md` — content rules, design system, motion rules and the per-chapter workflow
 
 ## About the book excerpts

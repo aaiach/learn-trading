@@ -1,0 +1,218 @@
+/* BalanceTheBook (5.3.1) */
+.btb {
+  display: grid;
+  gap: 12px;
+}
+.btb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btb-round {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--game-ink);
+}
+.btb-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--good-ink);
+}
+.btb-head {
+  margin: 0 0 2px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.btb-book,
+.btb-out {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--scene-bg);
+  border: 1px solid var(--line);
+}
+.btb-bet,
+.btb-res {
+  display: grid;
+  grid-template-columns: 92px 1fr 58px;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 750;
+}
+.btb-res {
+  grid-template-columns: 116px 1fr 58px;
+}
+.btb-bet strong,
+.btb-val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.btb-team,
+.btb-res-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btb-res-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.btb-track,
+.btb-axis {
+  position: relative;
+  height: 12px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.btb-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 99px;
+  background: var(--game);
+}
+.btb-axis::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--line-strong);
+}
+.btb-pnl {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 99px;
+  background: var(--see);
+}
+.btb-pnl.neg {
+  background: var(--ink-3);
+}
+.btb-rule {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+.btb-ctl {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  align-items: center;
+  gap: 8px;
+}
+.btb-step {
+  display: grid;
+  place-items: center;
+  height: 52px;
+  border-radius: 14px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line-strong);
+  color: var(--ink);
+  cursor: pointer;
+}
+.btb-step:hover:not(:disabled) {
+  border-color: var(--game);
+}
+.btb-step:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.btb-lay {
+  display: grid;
+  place-items: center;
+  min-height: 52px;
+  padding: 4px 8px;
+  border-radius: 14px;
+  border: 2px solid var(--line);
+  background: var(--surface-2);
+  font-size: 15.5px;
+  font-weight: 800;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.btb-lay.ok {
+  border-color: var(--good);
+  background: var(--good-soft);
+  color: var(--good-ink);
+}
+.btb-lay.ko {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+  color: var(--bad-ink);
+}
+.btb-keys {
+  margin: -4px 0 0;
+  font-size: 12px;
+  font-weight: 650;
+  text-align: center;
+  color: var(--ink-3);
+}
+.btb-msg {
+  min-height: 42px;
+}
+.btb-msg p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.btb-msg .ok {
+  color: var(--good-ink);
+}
+.btb-msg .ko {
+  color: var(--bad-ink);
+}
+.btb-hint {
+  color: var(--ink-3);
+}
+.btb-place {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  border-radius: 14px;
+  border: 2px solid var(--game);
+  background: var(--game-soft);
+  box-shadow: 0 3px 0 var(--game);
+  color: var(--game-ink);
+  font-size: 15.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btb-place:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+@media (max-width: 420px) {
+  .btb-bet,
+  .btb-res {
+    grid-template-columns: 84px 1fr 54px;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .btb-res {
+    grid-template-columns: 112px 1fr 54px;
+  }
+  .btb-keys {
+    display: none;
+  }
+}

@@ -28,6 +28,7 @@ const ROOT = bookDir();
 const SOURCES: Record<string, { layout: string; raw: string; first: number; tables?: string }> = {
   ch03: { layout: "03-the-trading-industry.txt", raw: "03-raw.txt", first: 32 },
   ch04: { layout: "04-orders-and-order-properties.txt", raw: "04-raw.txt", first: 68, tables: "04-tables.txt" },
+  ch05: { layout: "05-market-structures.txt", raw: "05-raw.txt", first: 89, tables: "05-tables.txt" },
 };
 // ONLY=4.3 npm test → check only units whose section starts with 4.3 (handy while one unit is being written).
 const ONLY = process.env.ONLY;

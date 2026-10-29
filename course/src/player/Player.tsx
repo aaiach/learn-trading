@@ -210,6 +210,12 @@ export function Player({
         }
         return;
       }
+      // QA builds only (VITE_QA=1 vite build): "]" skips any step, so a script can walk every screen.
+      if (import.meta.env.VITE_QA && e.key === "]") {
+        if (idx + 1 >= queue.length) finish();
+        else go(idx + 1, 1);
+        return;
+      }
       const t = e.target as HTMLElement | null;
       if (t && t.tagName === "INPUT") return;
       if (e.key === "ArrowRight" && step && !isQuestion(step) && !isActivity(step)) next();
@@ -217,7 +223,7 @@ export function Player({
     };
     window.addEventListener("keydown", on);
     return () => window.removeEventListener("keydown", on);
-  }, [finished, confirmExit, revealed, next, primary, step, back]);
+  }, [finished, confirmExit, revealed, next, primary, step, back, idx, queue.length, go, finish]);
 
   if (finished) {
     return <Complete title={title} mode={mode} result={finished} onDone={onExit} />;
