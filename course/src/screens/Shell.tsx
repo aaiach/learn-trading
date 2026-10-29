@@ -29,7 +29,8 @@ export function ChapterShell({
   const tabs: { id: Tab; label: string; icon: typeof Route; to: string }[] = [
     { id: "learn", label: "Learn", icon: Route, to: `/${ch.id}` },
     { id: "practice", label: "Practice", icon: Dumbbell, to: `/${ch.id}/practice` },
-    { id: "exam", label: "Exam", icon: GraduationCap, to: `/${ch.id}/exam` },
+    // a reading chapter has no mock exam
+    ...(ch.read ? [] : [{ id: "exam" as const, label: "Exam", icon: GraduationCap, to: `/${ch.id}/exam` }]),
   ];
   return (
     <div className="shell">

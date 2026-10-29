@@ -20,12 +20,12 @@ export type KindInfo = { tone: Tone; label: string; icon: LucideIcon; hint: stri
 export const KINDS: Record<Tone, KindInfo> = {
   def: { tone: "def", label: "Definition", icon: BookOpen, hint: "A term from the book and what it means" },
   idea: { tone: "idea", label: "Key idea", icon: Lightbulb, hint: "A rule or fact to keep" },
-  book: { tone: "book", label: "From the book", icon: Quote, hint: "Harris's exact words, with page" },
+  book: { tone: "book", label: "From the book", icon: Quote, hint: "The author's exact words, with page" },
   see: { tone: "see", label: "See it", icon: Clapperboard, hint: "An animation, one beat at a time" },
   prac: { tone: "prac", label: "Practice", icon: Target, hint: "A question; you get feedback right away" },
   game: { tone: "game", label: "Game", icon: Gamepad2, hint: "A scored mini-game" },
   recap: { tone: "recap", label: "Remember", icon: ListChecks, hint: "The lesson in three lines" },
-  today: { tone: "today", label: "Not in the book · today", icon: CalendarClock, hint: "What changed since 2003" },
+  today: { tone: "today", label: "Not in the book · today", icon: CalendarClock, hint: "What changed since the book came out" },
 };
 
 /** Lesson importance, shown as 1–3 bars (stars are taken: they score how a lesson went). */

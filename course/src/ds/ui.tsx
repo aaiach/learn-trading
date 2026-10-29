@@ -2,6 +2,7 @@ import { type ReactNode, Fragment } from "react";
 import { motion } from "motion/react";
 import { IMPORTANCE, KINDS, type Tone } from "./kinds.ts";
 import type { Cite, Imp } from "../content/types.ts";
+import { useBook } from "../content/books.ts";
 import { spring } from "../motion/tokens.ts";
 
 /** The kind label every screen starts with: same colour, icon and words everywhere. */
@@ -38,8 +39,11 @@ export function ImpTag({ imp }: { imp: Imp }) {
   );
 }
 
+/** Harris numbers his sections ("§ 4.2"); Valuation only names them ("Going Public"). */
+export const secRef = (s: string) => (/^\d+(\.\d+)*$/.test(s) ? `§ ${s}` : s);
+
 export function citeLabel(c: Cite): string {
-  const parts = [`p. ${c.p}`, `§ ${c.s}`];
+  const parts = [`p. ${c.p}`, secRef(c.s)];
   if (c.box) parts.push(`Box “${c.box}”`);
   if (c.table) parts.push(c.table);
   return parts.join(" · ");
@@ -96,6 +100,7 @@ export function BookQuote({
   size?: "sm" | "md" | "lg";
   label?: boolean;
 }) {
+  const book = useBook();
   return (
     <figure className={`bq bq-${size}${cite.table ? " bq-table" : ""}`}>
       <blockquote>{highlight(cite.t, mark)}</blockquote>
@@ -104,7 +109,7 @@ export function BookQuote({
           <span className="bq-icon" aria-hidden>
             ❝
           </span>
-          Harris · {citeLabel(cite)}
+          {book.author} · {citeLabel(cite)}
         </figcaption>
       )}
     </figure>

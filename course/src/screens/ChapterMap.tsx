@@ -7,7 +7,7 @@ import { questionsOf } from "../content/ids.ts";
 import { useChapterView } from "../focus.ts";
 import { navigate } from "../router.tsx";
 import { type ProgressStore, useProgress } from "../state/progress.ts";
-import { Button, ImpBars, ImpTag } from "../ds/ui.tsx";
+import { Button, ImpBars, ImpTag, secRef } from "../ds/ui.tsx";
 import { IMPORTANCE } from "../ds/kinds.ts";
 import { spring } from "../motion/tokens.ts";
 
@@ -79,19 +79,21 @@ export function ChapterMap({ ch, store }: { ch: Chapter; store: ProgressStore })
           </section>
         );
       })}
-      <section className="unit unit-final">
-        <button type="button" className="exam-node" onClick={() => navigate(`/${ch.id}/exam`)}>
-          <span className="exam-node-icon">
-            <Flag size={26} />
-          </span>
-          <span>
-            <strong>Chapter exam</strong>
-            <small>
-              {examN} questions · 35 to pass
-            </small>
-          </span>
-        </button>
-      </section>
+      {!ch.read && (
+        <section className="unit unit-final">
+          <button type="button" className="exam-node" onClick={() => navigate(`/${ch.id}/exam`)}>
+            <span className="exam-node-icon">
+              <Flag size={26} />
+            </span>
+            <span>
+              <strong>Chapter exam</strong>
+              <small>
+                {examN} questions · 35 to pass
+              </small>
+            </span>
+          </button>
+        </section>
+      )}
       <div className="map-foot">
         <button
           type="button"
@@ -131,7 +133,8 @@ function PathNodeView({
   const Icon =
     st === "locked" ? Lock : isCp ? (node.passed ? Crown : Trophy) : st === "done" ? Check : st === "current" ? Play : Star;
   const label = node.type === "lesson" ? node.lesson.title : `Checkpoint ${node.unitSec}`;
-  const sub = node.type === "lesson" ? node.lesson.sec : node.passed ? `Best ${node.best}%` : `${node.questions} questions`;
+  // a named section ("Going Public") is the lesson title already; show its pages instead
+  const sub = node.type === "lesson" ? (secRef(node.lesson.sec) === node.lesson.sec ? `pp. ${node.lesson.pages}` : node.lesson.sec) : node.passed ? `Best ${node.best}%` : `${node.questions} questions`;
   const imp = node.type === "lesson" ? node.lesson.imp : undefined;
   const start = () => {
     if (node.type === "lesson") navigate(`/${chId}/l/${node.lesson.id}`);
@@ -192,7 +195,7 @@ function PathNodeView({
             style={{ x: -offset / 2 }}
           >
             <p className="pop-eyebrow">
-              {node.type === "lesson" ? `§ ${node.lesson.sec} · pp. ${node.lesson.pages}` : `Unit ${node.unitSec}`}
+              {node.type === "lesson" ? `${secRef(node.lesson.sec)} · pp. ${node.lesson.pages}` : `Unit ${node.unitSec}`}
             </p>
             <h3>{label}</h3>
             {imp && <ImpTag imp={imp} />}

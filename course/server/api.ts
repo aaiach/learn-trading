@@ -25,7 +25,7 @@ function body(req: Connect.IncomingMessage): Promise<string> {
 }
 
 const handler: Connect.NextHandleFunction = async (req, res, next) => {
-  const m = req.url?.match(/^\/api\/progress\/(ch\d{2})$/);
+  const m = req.url?.match(/^\/api\/progress\/([a-z]{2}\d{2})$/);
   if (!m) return next();
   const file = join(DIR, `${m[1]}.json`);
   res.setHeader("Content-Type", "application/json");

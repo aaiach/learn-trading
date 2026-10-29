@@ -25,10 +25,13 @@ function bookDir(): string {
 }
 const ROOT = bookDir();
 // `tables`: optional hand transcriptions (tagged <<p.N>>) of rotated tables that pdftotext garbles.
-const SOURCES: Record<string, { layout: string; raw: string; first: number; tables?: string }> = {
+// Valuation's text (tagged by PDF page) sits next to Harris's, in source/valuation/; it needs no raw copy.
+const SOURCES: Record<string, { layout: string; raw?: string; first: number; tables?: string }> = {
   ch03: { layout: "03-the-trading-industry.txt", raw: "03-raw.txt", first: 32 },
   ch04: { layout: "04-orders-and-order-properties.txt", raw: "04-raw.txt", first: 68, tables: "04-tables.txt" },
   ch05: { layout: "05-market-structures.txt", raw: "05-raw.txt", first: 89, tables: "05-tables.txt" },
+  va01: { layout: "../valuation/01-why-value-value.txt", first: 50 },
+  va02: { layout: "../valuation/02-finance-in-a-nutshell.txt", first: 68 },
 };
 // ONLY=4.3 npm test → check only units whose section starts with 4.3 (handy while one unit is being written).
 const ONLY = process.env.ONLY;
@@ -71,9 +74,9 @@ for (const [id, full] of Object.entries(CHAPTERS)) {
   if (ONLY && !ch.units.length) continue;
   const src = SOURCES[id];
   // The book text lives in ../source, which is never published; without it the quote check is skipped.
-  const haveSource = existsSync(join(ROOT, src.layout)) && existsSync(join(ROOT, src.raw));
+  const haveSource = existsSync(join(ROOT, src.layout)) && (!src.raw || existsSync(join(ROOT, src.raw)));
   const layout = haveSource ? pagesFromLayout(readFileSync(join(ROOT, src.layout), "utf8")) : new Map<number, string>();
-  const raw = haveSource ? pagesFromRaw(readFileSync(join(ROOT, src.raw), "utf8"), src.first) : new Map<number, string>();
+  const raw = haveSource && src.raw ? pagesFromRaw(readFileSync(join(ROOT, src.raw), "utf8"), src.first) : new Map<number, string>();
   if (haveSource && src.tables && existsSync(join(ROOT, src.tables)))
     for (const [p, t] of pagesFromLayout(readFileSync(join(ROOT, src.tables), "utf8"))) layout.set(p, `${layout.get(p) ?? ""}\n${t}`);
 
@@ -116,7 +119,15 @@ for (const [id, full] of Object.entries(CHAPTERS)) {
         secs.add(u.sec);
         for (const l of u.lessons) secs.add(l.sec);
       }
-      const bad = cites.filter(({ cite }) => !/^\d+(\.\d+)*$/.test(cite.s)).map(({ path, cite }) => `${path}: ${cite.s}`);
+      // Harris numbers his sections. Valuation only names them: a cite gives the chapter number (its opening
+      // pages) or a heading, and every heading must be the book's, word for word.
+      const named = full.book === "valuation";
+      const text = norm([...layout.values()].join(""));
+      const isHeading = (s: string) => /^\d+$/.test(s) || text.includes(norm(s));
+      const bad = cites
+        .filter(({ cite }) => (named ? !isHeading(cite.s) : !/^\d+(\.\d+)*$/.test(cite.s)))
+        .map(({ path, cite }) => `${path}: ${cite.s}`);
+      if (named) for (const s of secs) if (!isHeading(s)) bad.push(`heading not in the book: ${s}`);
       expect(bad, bad.join("\n")).toEqual([]);
     });
   });
@@ -136,13 +147,15 @@ for (const [id, full] of Object.entries(CHAPTERS)) {
 
     it("every lesson teaches, illustrates and tests", () => {
       const bad: string[] = [];
+      // a reading chapter shows scenes only where the book has numbers, and checks lightly
+      const minTests = full.read ? 2 : 3;
       for (const l of lessons) {
         const kinds = new Set(l.steps.map((s) => s.kind));
         const learns = l.steps.filter((s) => ["definition", "idea", "quote"].includes(s.kind)).length;
         const tests = l.steps.filter((s) => isQuestion(s) || s.kind === "classify" || s.kind === "match" || s.kind === "game").length;
         if (!learns) bad.push(`${l.id}: no definition/idea/quote`);
-        if (!kinds.has("see")) bad.push(`${l.id}: no "see" illustration`);
-        if (tests < 3) bad.push(`${l.id}: only ${tests} practice steps`);
+        if (!kinds.has("see") && !full.read) bad.push(`${l.id}: no "see" illustration`);
+        if (tests < minTests) bad.push(`${l.id}: only ${tests} practice steps`);
         if (l.steps[l.steps.length - 1].kind !== "recap") bad.push(`${l.id}: last step should be a recap`);
       }
       expect(bad, bad.join("\n")).toEqual([]);
@@ -202,7 +215,7 @@ for (const [id, full] of Object.entries(CHAPTERS)) {
       expect(want.length).toBeGreaterThan(0);
       const thin = v.units.filter((u) => u.lessons.length && questionsOf(v, (_l, s) => s === u.sec).length < 5).map((u) => u.sec);
       expect(thin, `checkpoints under 5 questions: ${thin.join(", ")}`).toEqual([]);
-      expect(questionsOf(v).length).toBeGreaterThanOrEqual(40);
+      if (!full.read) expect(questionsOf(v).length).toBeGreaterThanOrEqual(40);
     });
 
     it("each unit has enough questions for a checkpoint", () => {

@@ -8,6 +8,8 @@ Built so far:
 - **Chapter 3, The Trading Industry** (53 lessons, 235 questions, 59 animated scenes, 7 games).
 - **Chapter 4, Orders and Order Properties** (38 lessons, 261 questions, 54 animated scenes, 12 games).
 - **Chapter 5, Market Structures** (44 lessons, 275 questions, 69 animated scenes, 9 games).
+- A second book, McKinsey's *Valuation* (7th edition): **Chapter 1, Why Value Value?** and **Chapter 2, Finance in a
+  Nutshell**, as quick reading chapters (the key passages one screen at a time, with short checks).
 
 ## Run it
 

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { MotionConfig } from "motion/react";
 import { usePath } from "./router.tsx";
 import { CHAPTERS } from "./course.ts";
+import { BookContext, bookOf, setShelf } from "./content/books.ts";
 import { storeFor } from "./state/progress.ts";
 import { Home } from "./screens/Home.tsx";
 import { ChapterShell } from "./screens/Shell.tsx";
@@ -11,15 +12,26 @@ import { ExamHub, ExamRun } from "./screens/Exam.tsx";
 import { Cards } from "./screens/Cards.tsx";
 import { CheckpointRun, LessonRun, ReviewRun } from "./screens/Runs.tsx";
 import { Sync } from "./screens/Sync.tsx";
+import type { Chapter } from "./content/types.ts";
 
 function Route({ path }: { path: string }) {
   const [, chId, section, arg] = path.split("/").map(decodeURIComponent);
   const ch = CHAPTERS[chId];
   useEffect(() => {
-    document.title = ch ? `Ch. ${ch.num} ${ch.title} · Trading & Exchanges` : "Trading & Exchanges";
+    document.title = ch ? `Ch. ${ch.num} ${ch.title} · ${bookOf(ch).title}` : "Learn Trading";
+    // back on the home page, show the book this chapter belongs to
+    if (ch) setShelf(bookOf(ch).id);
   }, [ch]);
   if (chId === "sync") return <Sync key={section ?? ""} start={section === "send" || section === "get" ? section : "pick"} />;
   if (!ch) return <Home />;
+  return (
+    <BookContext.Provider value={bookOf(ch)}>
+      <ChapterRoute ch={ch} section={section} arg={arg} />
+    </BookContext.Provider>
+  );
+}
+
+function ChapterRoute({ ch, section, arg }: { ch: Chapter; section: string; arg: string }) {
   const store = storeFor(ch.id);
   switch (section) {
     case undefined:

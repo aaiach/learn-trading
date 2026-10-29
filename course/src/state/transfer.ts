@@ -16,7 +16,7 @@ export function collect(): Bundle {
   const ids = new Set(Object.keys(CHAPTERS));
   try {
     for (let i = 0; i < localStorage.length; i++) {
-      const m = localStorage.key(i)?.match(/^te:(ch\d{2})$/);
+      const m = localStorage.key(i)?.match(/^te:([a-z]{2}\d{2})$/);
       if (m) ids.add(m[1]);
     }
   } catch {
@@ -145,7 +145,7 @@ export async function decode(text: string): Promise<Bundle> {
     throw new NotOurs();
   }
   if (!isObj(b) || b.app !== APP || b.v !== 1 || !isObj(b.chapters)) throw new NotOurs();
-  for (const [id, p] of Object.entries(b.chapters)) if (!/^ch\d{2}$/.test(id) || !isProgress(p)) throw new NotOurs();
+  for (const [id, p] of Object.entries(b.chapters)) if (!/^[a-z]{2}\d{2}$/.test(id) || !isProgress(p)) throw new NotOurs();
   return b as Bundle;
 }
 

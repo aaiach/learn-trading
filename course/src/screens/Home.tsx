@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, BookOpen, Lock, Smartphone } from "lucide-react";
-import { TOC, chapterId } from "../content/toc.ts";
+import { BOOKS, BOOK_IDS, type Book, bookOf, setShelf, useShelf } from "../content/books.ts";
 import { CHAPTERS, mastery } from "../course.ts";
 import { Link } from "../router.tsx";
 import { storeFor, useProgress } from "../state/progress.ts";
@@ -11,8 +11,8 @@ import { Chip, ImpBars, ImpTag } from "../ds/ui.tsx";
 import { focusView, setFocus, useChapterView, useFocus } from "../focus.ts";
 import { spring } from "../motion/tokens.ts";
 
-function ChapterRow({ num, title, page }: { num: number; title: string; page: number }) {
-  const id = chapterId(num);
+function ChapterRow({ book, num, title, page }: { book: Book; num: number; title: string; page: number }) {
+  const id = book.chapterId(num);
   const ch = CHAPTERS[id];
   if (!ch) {
     return (
@@ -49,7 +49,10 @@ function ReadyRow({ id, num, title, page }: { id: string; num: number; title: st
   );
 }
 
-const BUILT = Object.keys(CHAPTERS).sort((a, b) => CHAPTERS[a].num - CHAPTERS[b].num);
+// Book by book, then chapter by chapter.
+const BUILT = Object.keys(CHAPTERS).sort(
+  (a, b) => BOOK_IDS.indexOf(bookOf(CHAPTERS[a]).id) - BOOK_IDS.indexOf(bookOf(CHAPTERS[b]).id) || CHAPTERS[a].num - CHAPTERS[b].num,
+);
 
 /** The chapter the learner touched last; once all its lessons are done, the next built chapter. */
 function useHeroChapter(): string {
@@ -76,7 +79,7 @@ function HeroGo() {
       <MasteryRing value={m} size={44} />
       <span className="hero-go-text">
         <small>
-          {ch.part} · Chapter {ch.num}
+          {bookOf(ch).title} · Chapter {ch.num}
         </small>
         <strong>{ch.title}</strong>
       </span>
@@ -112,7 +115,21 @@ function FocusSwitch() {
   );
 }
 
+/** Which book's contents the home page lists. */
+function BookSwitch({ on }: { on: Book }) {
+  return (
+    <div className="seg book-seg" role="tablist" aria-label="Book">
+      {BOOK_IDS.map((id) => (
+        <button key={id} type="button" role="tab" aria-selected={id === on.id} className={id === on.id ? "on" : ""} onClick={() => setShelf(id)}>
+          {BOOKS[id].title}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function Home() {
+  const book = BOOKS[useShelf()];
   return (
     <div className="home">
       <header className="home-head col">
@@ -121,8 +138,8 @@ export function Home() {
             <BookOpen size={20} />
           </span>
           <div>
-            <h1>Trading &amp; Exchanges</h1>
-            <p>Larry Harris · Market Microstructure for Practitioners</p>
+            <h1>{book.title}</h1>
+            <p>{book.sub}</p>
           </div>
           <div className="home-tools">
             <Link to="/sync" className="icon-btn" aria-label="Continue on another device" title="Continue on another device">
@@ -133,6 +150,7 @@ export function Home() {
         </div>
       </header>
       <main className="col home-main">
+        <BookSwitch on={book} />
         <HeroGo />
         <FocusSwitch />
         <motion.details className="legend" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
@@ -156,14 +174,14 @@ export function Home() {
             ))}
           </ul>
         </motion.details>
-        {TOC.map((part) => (
+        {book.toc.map((part) => (
           <section key={part.title} className="toc-part">
             <h2 className="toc-part-title">
               {part.part && <span>{part.part}</span>} {part.title}
             </h2>
             <ul className="toc-list">
               {part.chapters.map((c) => (
-                <ChapterRow key={c.num} {...c} />
+                <ChapterRow key={c.num} book={book} {...c} />
               ))}
             </ul>
           </section>

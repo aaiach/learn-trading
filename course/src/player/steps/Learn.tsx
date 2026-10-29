@@ -1,11 +1,11 @@
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
 import type { DefinitionStep, IdeaStep, QuoteStep, RecapStep, SeeStep, TodayStep } from "../../content/types.ts";
-import { BookQuote, Card, Rich, citeLabel } from "../../ds/ui.tsx";
+import { BookQuote, Card, Rich, citeLabel, secRef } from "../../ds/ui.tsx";
 import { Swap } from "../../motion/AutoHeight.tsx";
 import { EASE_OUT } from "../../motion/tokens.ts";
 
-const ref = (s: { p: number | string; s: string }) => `§ ${s.s} · p. ${s.p}`;
+const ref = (s: { p: number | string; s: string }) => `${secRef(s.s)} · p. ${s.p}`;
 
 export function DefinitionView({ step }: { step: DefinitionStep }) {
   return (

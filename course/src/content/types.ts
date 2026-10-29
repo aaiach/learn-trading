@@ -48,7 +48,7 @@ export type QuoteStep = {
 };
 export type SeeStep = { kind: "see"; title: string; illus: Illustration; beats: Beat[] };
 export type RecapStep = { kind: "recap"; title?: string; points: { text: string; cite: Cite }[] };
-/** A fact that changed after the book was published (2003). Never mixed into definitions. */
+/** A fact that changed after the book was published. Never mixed into definitions. */
 export type TodayStep = { kind: "today"; title: string; body: string; source: string };
 
 export type LearnStep = DefinitionStep | IdeaStep | QuoteStep | SeeStep | RecapStep | TodayStep;
@@ -115,8 +115,18 @@ export type Unit = {
   checkpoint?: Question[];
 };
 
+/** The books in the course (see `src/content/books.ts`). */
+export type BookId = "harris" | "valuation";
+
 export type Chapter = {
   id: string;
+  /** Which book; Harris when absent. */
+  book?: BookId;
+  /**
+   * A reading chapter: the book's key passages one per screen, a few quick checks per lesson, scenes only
+   * where the book has numbers to show, and no mock exam.
+   */
+  read?: boolean;
   num: number;
   title: string;
   part: string;

@@ -4,8 +4,10 @@ import type { Progress } from "./state/progress.ts";
 import { CH03 } from "./content/ch03/index.ts";
 import { CH04 } from "./content/ch04/index.ts";
 import { CH05 } from "./content/ch05/index.ts";
+import { VA01 } from "./content/va01/index.ts";
+import { VA02 } from "./content/va02/index.ts";
 
-export const CHAPTERS: Record<string, Chapter> = { ch03: CH03, ch04: CH04, ch05: CH05 };
+export const CHAPTERS: Record<string, Chapter> = { ch03: CH03, ch04: CH04, ch05: CH05, va01: VA01, va02: VA02 };
 
 export type NodeStatus = "done" | "current" | "open" | "locked";
 
@@ -51,8 +53,9 @@ export function mastery(ch: Chapter, p: Progress): number {
   const done = lessons.filter((l) => p.lessons[l.id]).length;
   const units = ch.units.filter((u) => u.lessons.length);
   const cps = units.filter((u) => p.checkpoints[u.sec]?.passed).length;
-  const exam = p.exams.some((e) => e.passed) ? 1 : 0;
-  const total = lessons.length * 2 + units.length + 2;
+  // a reading chapter has no exam
+  const exam = !ch.read && p.exams.some((e) => e.passed) ? 1 : 0;
+  const total = lessons.length * 2 + units.length + (ch.read ? 0 : 2);
   return Math.round((100 * (done * 2 + cps + exam * 2)) / Math.max(1, total));
 }
 

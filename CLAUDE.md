@@ -1,6 +1,7 @@
 # Trading and Exchanges — interactive course
 
-Source: Larry Harris, *Trading and Exchanges: Market Microstructure for Practitioners* (657 pp., 29 chapters, 7 parts).
+Source: Larry Harris, *Trading and Exchanges: Market Microstructure for Practitioners* (657 pp., 29 chapters, 7 parts),
+then McKinsey's *Valuation* as a second book (see "Chapters built").
 One interactive course per chapter, in a local React app (`course/`). The learner wants to learn fast: no
 storytelling, hands-on practice immediately, constant testing.
 
@@ -148,6 +149,16 @@ every experienced trader knows. (The learner's personal context is kept out of t
   5-3 and 5-6 that the text layer drops. Book quirks: Table 5-5 prints 37.5 twice in row Z (unused); the text has
   OCR slips ("Co the Vendor Display Rule", "(10I)", "NOB", "Ill"), never quoted; the quote check strips non-ASCII,
   so "Deutsche Börse" is only paraphrased.
+- Book 2, *Valuation* (McKinsey; Koller, Goedhart, Wessels; 7th ed., 2020), added 2026-10-29. The learner does only its
+  important chapters, from their own plan (A = read first, B = read once, don't study). Registered in
+  `src/content/books.ts` (its TOC, chapter ids `vaNN`; the home page switches between books). Text in
+  `source/valuation/NN-*.txt`, tagged `<<p.N>>` by **PDF page** (the e-book has no printed page numbers).
+  Sections are named, not numbered: a `Cite`'s `s` is the heading (the chapter number for the opening pages), and
+  `npm test` checks every heading is in the book.
+  - Reading chapters (`read: true`; asked: "make me read this rapidly quoting the most important part"): the
+    book's key sentences one per screen with a one-line lead, definitions for new terms, scenes only where the book
+    has numbers, ≥2 checks per lesson, no exam. Ch. 1 Why Value Value? (5 lessons, 14 questions) and Ch. 2 Finance
+    in a Nutshell (6 lessons, 16 questions, 6 scenes from Exhibits 2.1–2.5 in `va02/illus.tsx`).
 - Building a unit in parallel with forks worked: give each fork its own `uNN.ts` / `illus/uNN.tsx` / games files,
   keep shared engine edits in the main session, and ask for short excerpts written in small steps (one fork's
   large output with many book quotes was stopped by the API's content filter).
