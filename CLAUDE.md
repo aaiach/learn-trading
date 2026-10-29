@@ -70,6 +70,17 @@ every experienced trader knows. (The learner's personal context is kept out of t
 - Discrete quantities step; only money/percent counts (`Num`, `CountUp`). Direct manipulation follows the pointer.
 - `MotionConfig reducedMotion="user"`; tokens jump under reduced motion.
 
+## Where it lives (moved out of `stuff` on 2026-10-29)
+- Main checkout: `~/orca/projects/learn-trading`, branch `main`. Orca runs each session in a git worktree under
+  `~/orca/workspaces/learn-trading/<name>`, on its own branch. Leave the main checkout clean: nobody edits there.
+- In a new worktree, run `sh scripts/worktree-setup.sh` first. Worktrees don't get git-ignored files, so it links
+  `source/` (the book) and `course/.vercel` (the deploy link) from the main checkout and installs `course/node_modules`.
+  Without it the agent can't read the chapter text (`npm test` still finds the book in the main checkout).
+- Ship, when asked: typecheck, test and build in `course/`; commit on the branch; then
+  `git -C ~/orca/projects/learn-trading merge --ff-only <branch> && git -C ~/orca/projects/learn-trading push origin main`
+  (rebase the branch on `main` first if it moved); then `cd course && vercel deploy --prod --yes` from the worktree.
+- One dev server at a time: port 5317 is strict.
+
 ## Publishing
 - Public repo: https://github.com/aaiach/learn-trading (root = this folder). `source/`, `.env*`, `.vercel` and
   `course/progress/*.json` are git-ignored and must never be published (the book is copyrighted).
@@ -99,7 +110,9 @@ every experienced trader knows. (The learner's personal context is kept out of t
   `/Library/Frameworks/Python.framework/Versions/3.11/bin/python3`).
 
 ## Per-chapter workflow
-1. Read `course/progress/chNN.json` of earlier chapters: missed question ids, checkpoint scores.
+1. Read `course/progress/chNN.json` of earlier chapters: missed question ids, checkpoint scores. The learner studies on the
+   deployed site, so these are usually empty: ask for a progress file instead (home → phone icon → Send from this
+   device → Or save it as a file). Never commit it.
 2. Read the whole chapter text; list concepts, definitions, formulas, tables and boxes by section.
 3. Write `uNN.ts` per unit with exact excerpts, scenes in `illus/`, games where something is computable.
 4. `npm run typecheck`, `npm test`, `npm run build` in `course/`.

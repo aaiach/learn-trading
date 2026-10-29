@@ -1,5 +1,6 @@
 // Every excerpt shown to the learner must appear word for word on the cited page,
 // and every exercise must be answerable. Run: npm test
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,7 +11,19 @@ import { isQuestion } from "../src/content/types.ts";
 import { qid, questionsOf } from "../src/content/ids.ts";
 import { focusView } from "../src/focus.ts";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "source", "chapters");
+const HERE = dirname(fileURLToPath(import.meta.url));
+// A git worktree (each Orca session) gets no git-ignored files, so the book may only be in the main checkout.
+function bookDir(): string {
+  const local = join(HERE, "..", "..", "source", "chapters");
+  if (existsSync(local)) return local;
+  try {
+    const common = execFileSync("git", ["rev-parse", "--path-format=absolute", "--git-common-dir"], { cwd: HERE, encoding: "utf8" });
+    return join(dirname(common.trim()), "source", "chapters");
+  } catch {
+    return local;
+  }
+}
+const ROOT = bookDir();
 // `tables`: optional hand transcriptions (tagged <<p.N>>) of rotated tables that pdftotext garbles.
 const SOURCES: Record<string, { layout: string; raw: string; first: number; tables?: string }> = {
   ch03: { layout: "03-the-trading-industry.txt", raw: "03-raw.txt", first: 32 },

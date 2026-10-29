@@ -1,5 +1,6 @@
 # The book (PDF and full-text extractions) is copyrighted: keep it local, never publish it.
-source/
+# No trailing slash: in a worktree `source` is a symlink to the main checkout's folder.
+/source
 
 # Secrets and local config
 .env
